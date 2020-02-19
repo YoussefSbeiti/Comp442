@@ -15,15 +15,15 @@ class Parser:
         self.grammar = grammar
         self.table = {}
 
-    def _lex(self ):
+    def _lex(self, outfile):
         # Tokenize
-        
+        file = open(outfile , 'w+')
         while True:
             tok = self.lexer.token()
             if not tok: 
                 break      # No more input
-            print(tok.type)
-
+            file.write(tok.type)
+        file.close()
     
     def nextToken(self):
         tok = self.lexer.token() 

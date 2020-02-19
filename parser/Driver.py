@@ -4,7 +4,7 @@ from Parser import *
 grammar = Grammar('../grammar.atocc' , '../first.txt' , '../follow.txt')
 parser = Parser(grammar , '../polynomial.src')
 
-parser._lex()
+parser._lex('../lexpositivegrading.outlextokens')
 #grammar.printRules()
 #parser.generateParseTable()
 #parser.printParseTableHTML()
