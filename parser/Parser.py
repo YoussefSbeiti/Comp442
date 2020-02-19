@@ -15,7 +15,7 @@ class Parser:
         self.grammar = grammar
         self.table = {}
 
-    def _lex(self , src):
+    def _lex(self ):
         # Tokenize
         
         while True:
