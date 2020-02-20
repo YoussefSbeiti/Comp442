@@ -32,15 +32,12 @@ fParams -> EPSILON
 
 fParamsTail -> 'COMMA' type 'id' rept-fParamsTail3 
 
-factor -> idnestid factorLF 
+factor -> idnestid 
 factor -> 'intNum' 
 factor -> 'floatNum' 
 factor -> 'LPAREN' arithExpr 'RPAREN' 
 factor -> 'not' factor 
 factor -> sign factor 
-
-factorLF -> 'LPAREN' aParams 'RPAREN' 
-factorLF -> rept-factorLF0 
 
 funcBody -> opt-funcBody0 'do' rept-funcBody2 'end' 
 
@@ -49,24 +46,28 @@ funcDecl -> 'id' 'LPAREN' fParams 'RPAREN' 'COLON' funcDeclLF
 funcDeclLF -> type 'SEMICOLON' 
 funcDeclLF -> 'void' 'SEMICOLON' 
 
-funcDef -> funcHead funcBody 'SEMICOLON' 
+funcDef -> funcHead funcBody 
 
 funcHead -> funcHead0 'LPAREN' fParams 'RPAREN' 'COLON' funcHeadLF 
 
 funcHead0 -> 'id' funcHead0LF 
 
-funcHead0LF -> 'sr' 'id' 
+funcHead0LF -> 'DOUBLECOLON' 'id' 
 funcHead0LF -> EPSILON 
 
-funcHeadLF -> type 'SEMICOLON' 
-funcHeadLF -> 'void' 'SEMICOLON' 
+funcHeadLF -> type 
+funcHeadLF -> 'void' 
 
-functionCall -> idnestid 'LPAREN' aParams 'RPAREN' 
+functionCall -> idnestid 
 
-idnestLF -> rept-idnestLF0 'DOT' 'id' 
-idnestLF -> 'LPAREN' aParams 'RPAREN' 'DOT' 'id' 
+idnestLF -> rept-idnestLF0 
+idnestLF -> indice rept-idnestLF1 
+idnestLF -> 'LPAREN' aParams 'RPAREN' 
 
-idnestid -> 'id' rept-idnestid1 
+idnestLFLF -> rept-idnestLFLF0 
+idnestLFLF -> 'LPAREN' aParams 'RPAREN' 
+
+idnestid -> 'id' idnestLF 
 
 indice -> 'LSB' arithExpr 'RSB' 
 
@@ -113,17 +114,17 @@ rept-fParams3 -> EPSILON
 rept-fParamsTail3 -> arraySize rept-fParamsTail3 
 rept-fParamsTail3 -> EPSILON 
 
-rept-factorLF0 -> indice rept-factorLF0 
-rept-factorLF0 -> EPSILON 
-
 rept-funcBody2 -> statement rept-funcBody2 
 rept-funcBody2 -> EPSILON 
 
-rept-idnestLF0 -> indice rept-idnestLF0 
+rept-idnestLF0 -> 'DOT' 'id' idnestLFLF rept-idnestLF0 
 rept-idnestLF0 -> EPSILON 
 
-rept-idnestid1 -> idnestLF rept-idnestid1 
-rept-idnestid1 -> EPSILON 
+rept-idnestLF1 -> indice rept-idnestLF1 
+rept-idnestLF1 -> EPSILON 
+
+rept-idnestLFLF0 -> indice rept-idnestLFLF0 
+rept-idnestLFLF0 -> EPSILON 
 
 rept-memberDecl2 -> arraySize rept-memberDecl2 
 rept-memberDecl2 -> EPSILON 
@@ -146,14 +147,8 @@ rept-prog1 -> EPSILON
 rept-statBlock1 -> statement rept-statBlock1 
 rept-statBlock1 -> EPSILON 
 
-rept-statementLF0 -> indice rept-statementLF0 
-rept-statementLF0 -> EPSILON 
-
 rept-varDecl2 -> arraySize rept-varDecl2 
 rept-varDecl2 -> EPSILON 
-
-rept-variable1 -> indice rept-variable1 
-rept-variable1 -> EPSILON 
 
 rightrec-arithExpr -> EPSILON 
 rightrec-arithExpr -> addOp term rightrec-arithExpr 
@@ -175,8 +170,8 @@ statement -> 'read' 'LPAREN' variable 'RPAREN' 'SEMICOLON'
 statement -> 'write' 'LPAREN' expr 'RPAREN' 'SEMICOLON' 
 statement -> 'return' 'LPAREN' expr 'RPAREN' 'SEMICOLON' 
 
-statementLF -> rept-statementLF0 assignOp expr 'SEMICOLON' 
-statementLF -> 'LPAREN' aParams 'RPAREN' 'SEMICOLON' 
+statementLF -> assignOp expr 'SEMICOLON' 
+statementLF -> 'SEMICOLON' 
 
 term -> factor rightrec-term 
 
@@ -186,7 +181,7 @@ type -> 'id'
 
 varDecl -> type 'id' rept-varDecl2 'SEMICOLON' 
 
-variable -> idnestid rept-variable1 
+variable -> idnestid 
 
 visibility -> 'public' 
 visibility -> 'private' 

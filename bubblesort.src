@@ -1,4 +1,3 @@
-/* sort the array */
 bubbleSort(integer arr[], integer size) : void
   local
     integer n;
@@ -30,7 +29,6 @@ bubbleSort(integer arr[], integer size) : void
       end;
   end
    
-/* Print the array */
 printArray(integer arr[], integer size) : void
   local
     integer n;
@@ -45,7 +43,6 @@ printArray(integer arr[], integer size) : void
       end;
   end 
 
-// main funtion to test above
 main  
   local
     integer arr[7]; 

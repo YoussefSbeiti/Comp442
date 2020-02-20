@@ -1,0 +1,69 @@
+<START>        ::= <prog>
+<prog>         ::= {{<classDecl>}} {{<funcDef>}} 'main' <funcBody>
+<classDecl>    ::= 'class' 'id' [['inherits' 'id' {{'COMMA' 'id'}}]] 'LCB' {{<visibility> <memberDecl>}} 'RCB' 'SEMICOLON'
+<visibility>   ::= 'public' | 'private'
+ 
+<memberDecl> ::= 'id' <memberDeclLF> | 'integer' 'id' {{<arraySize>}} 'SEMICOLON' | 'float' 'id' {{<arraySize>}} 'SEMICOLON'
+
+<memberDeclLF> ::=  'LPAREN' <fParams> 'RPAREN' 'COLON' <funcDeclLF>  |  'id' {{<arraySize>}} 'SEMICOLON'
+
+<funcDecl>     ::= 'id' 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcDeclLF> 
+<funcDeclLF> ::= <type> 'SEMICOLON' |  'void' 'SEMICOLON'  
+
+<funcHead>     ::= <funcHead0> 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcHeadLF> 
+<funcHeadLF> ::= <type>  | 'void' 
+<funcHead0> ::=  'id' <funcHead0LF>
+<funcHead0LF> ::= 'DOUBLECOLON' 'id' | EPSILON
+
+<funcDef>      ::= <funcHead> <funcBody> 
+<funcBody>     ::= [[ 'local' {{<varDecl>}} ]] 'do' {{<statement>}} 'end'
+<varDecl>      ::= <type> 'id' {{<arraySize>}} 'SEMICOLON'
+
+<statement>    ::= <idnestid>  <statementLF>
+              | 'if'     'LPAREN' <relExpr> 'RPAREN' 'then' <statBlock> 'else' <statBlock> 'SEMICOLON'
+              | 'while'  'LPAREN' <relExpr> 'RPAREN' <statBlock> 'SEMICOLON'
+              | 'read'   'LPAREN' <variable> 'RPAREN' 'SEMICOLON'
+              | 'write'  'LPAREN' <expr> 'RPAREN' 'SEMICOLON'
+              | 'return' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON'
+
+ <statementLF> ::= <assignOp> <expr> 'SEMICOLON' |  'SEMICOLON'             
+
+<assignStat>   ::= <variable> <assignOp> <expr>
+<statBlock>    ::= 'do' {{<statement>}} 'end' | <statement> | EPSILON  
+<expr>         ::= <arithExpr> <exprLF>
+<exprLF> ::= <relOp> <arithExpr> | EPSILON
+<relExpr>      ::= <arithExpr> <relOp> <arithExpr>
+<arithExpr>    ::= <arithExpr> <addOp> <term> | <term> 
+<sign>         ::= 'PLUS' | 'MINUS'
+<term>         ::= <term> <multOp> <factor> | <factor>
+<factor>       ::= <idnestid> 
+              | 'intNum' | 'floatNum'
+              | 'LPAREN' <arithExpr> 'RPAREN'
+              | 'not' <factor>
+              | <sign> <factor>
+
+<idnestid> ::=  'id' <idnestLF>
+
+
+<variable>     ::= <idnestid> 
+<functionCall> ::= <idnestid> 
+
+<idnestLF> ::=     {{ 'DOT' 'id' <idnestLFLF> }}  | <indice> {{<indice>}} | 'LPAREN' <aParams> 'RPAREN'
+<idnestLFLF> ::= {{<indice>}} |   'LPAREN' <aParams> 'RPAREN' 
+
+<indice>       ::= 'LSB' <arithExpr> 'RSB'
+
+<arraySize>    ::= 'LSB' <arraySizeInt> 'RSB' 
+<arraySizeInt> ::= 'intNum' | EPSILON
+
+<type>         ::= 'integer' | 'float' | 'id'
+
+<fParams>      ::= <type> 'id' {{<arraySize>}} {{<fParamsTail>}} | EPSILON  
+<aParams>      ::= <expr> {{<aParamsTail>}} | EPSILON 
+<fParamsTail>  ::= 'COMMA' <type> 'id' {{<arraySize>}}
+<aParamsTail>  ::= 'COMMA' <expr>
+<assignOp>     ::= 'ASSIGN'
+<relOp>        ::= 'EQUAL' | 'notEQ' | 'LT' | 'GT' | 'LEQ' | 'GEQ' 
+<addOp>        ::= 'PLUS' | 'MINUS' | 'or' 
+<multOp>       ::= 'TIMES' | 'DIVIDE' | 'and'
+

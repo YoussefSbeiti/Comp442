@@ -2,18 +2,23 @@ from Lexer.Lexer import Lexer
 import json
 from tabulate import tabulate
 import re
+from types import SimpleNamespace
 
 class Parser:
     def __init__(self , grammar, srcPath):
         lexer = Lexer()
         lexer.build()
         self.lexer = lexer.lexer
+        #self.lexer.lineno += 1
         file = open(srcPath , 'r')
         self.lexer.input(file.read())
         file.close()
 
         self.grammar = grammar
         self.table = {}
+
+        #delete contents of wrror file
+        open("errors.txt", "w").close()
 
     def _lex(self, outfile):
         # Tokenize
@@ -26,9 +31,17 @@ class Parser:
         file.close()
     
     def nextToken(self):
+        
         tok = self.lexer.token() 
+        token = SimpleNamespace()
+        token.value = 'EOF'
+        token.type = '$'
         if tok:
-            return tok.type
+            if 'COMMENT' in tok.type:
+                 tok = self.nextToken()
+            return tok
+    
+        else: return token
 
     def generateParseTable(self):
          for rule in self.grammar.rules:
@@ -52,9 +65,6 @@ class Parser:
                     self.table[rule['LHS']][terminal] = 'empty'
 
     def printParseTableHTML(self):
-        #print(json.dumps(self.table, indent = 1))
-        #for nt,row in sorted(self.table.items()):
-         #   print ("{" + str(nt) + str(row) + " }")
         
         print(sorted(self.grammar.terminals))
         rows = []
@@ -79,35 +89,99 @@ class Parser:
         file.close()
 
     def parse(self):
+        #open outderivation file
+        file   = open( 'outDerivation.txt' , 'w+')    
+        
+        #push the EOF token to the stack
         stack = ['$']
+        #push start rule
         stack.append('<START>')
-        #nextToken = self.nextToken() ##fix empty token
+        
+        #get next token
         a = self.nextToken()
         error= False;
+        
         while stack[-1] != '$' :
-            print('a =' + a +'|')
+            #x = top()
             x = stack[-1] 
+            
+            #show stack and next token
+            file.write('---------------------------------------------------------------\n')
+            file.write('currentStack' + str(stack) + ". Token to read: " + str(a) + '\n')
+
             if x in self.grammar.terminals or x == 'EPSILON':
-                print('found terminal: ' + x)
-                if x == a or x == 'EPSILON':
-                    print('popping rule')
-                    stack.pop()
+                #print('found terminal: ' + x)
+                if x == a.type or x == 'EPSILON':
+                    
+                    file.write('popping terminal ' + stack.pop() + '\n')
+                    
                     if x != 'EPSILON':
                         a = self.nextToken()
-                else: error = True 
+                    
+                else: 
+                    print('found T error')
+                    a = self.skipError(a,stack)
+                    error = True 
             else:
-                print('found non terminal:' + x)
-                if self.table[x][a] != 'empty':
-                    print('found rule to use: ' + str(self.table[x][a]))
-                    stack.pop();       
-                    elements = self.table[x][a]['RHS'].split()[::-1]
+                #print('found non terminal:' + x)
+                if self.table[x][a.type] != 'empty':
+                    
+                    file.write('found rule to use: ' + self.table[x][a.type]['LHS'] + " -> " + self.table[x][a.type]['RHS'] + '\n')
+                    file.write("popping " + stack.pop())       
+                    
+                    elements = self.table[x][a.type]['RHS'].split()[::-1]
+                    
+                    file.write("adding " + str(elements) + " to stack\n")
+                    
                     stack.extend(elements)
-                else: error = True
-            print('currentStack' + str(stack))
-        if a != '$' or error == True:
+                else: 
+                    print('found error')
+                    a = self.skipError(a,stack)
+                    error = True
+        
+        if error == True:
             return False 
-        else : return True 
+        else : 
+            file.write("\n\nParsing successful!")
+            file.close()
+            return True 
 
+    
+    def skipError(self , lookAhead , stack):
+        file = open('errors.txt' , 'a+')
+        file.write("Syntax error for token " + str(lookAhead) + "\n")
+
+        top = stack[-1]
+        first = self.grammar.firstSets
+        follow = self.grammar.followSets
+        
+        if top not in self.grammar.terminals:
+
+            print("when error top of stack is NT")
+
+            if lookAhead.type == '$' or lookAhead.type in self.grammar.followSets[stack[-1]]:
+                print('popping stack to resume parse. Token = ' +  str(lookAhead))
+                stack.pop()   
+                return lookAhead         
+            else: 
+                print(lookAhead)
+                while lookAhead.type not in first[top] and ('EPSILON' in first[top] and lookAhead.type not in follow[top]):
+                    #if lookAhead.type == 'SEMICOLON':
+                        #print('finding sync token. Possibilities' +  str(first[top]) + " ")
+                        #if('EPSILON' in first[top]):
+                            #print('lookAhead.type = ' + lookAhead.type + ' not in : ' + str(follow[top]) +  str(lookAhead.type not in follow[top]))
+                    
+                    return self.nextToken()
+                    #print('current token = ' + str(lookAhead))
+        else : 
+            
+            while lookAhead.type != top and lookAhead.type != '$':
+                return self.nextToken()
+                #print('skipping token' + str(lookAhead))
+                #print('here + lh' + str(lookAhead.type != '$' or lookAhead.type != top ))
+            #stack.pop()
+                
+        file.close()
 
 
         

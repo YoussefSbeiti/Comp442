@@ -1,59 +1,84 @@
-bubbleSort(integer arr[], integer size) : void
-  local
-    integer n;
-    integer i;
-    integer j;
-    integer temp; 
-  do
-    n = size;
-    i = 0;
-    j = 0;
-    temp = 0;
-    while (i < n-1)
-      do
-        while (j < n-i-1)
-          do
-            if (arr[j] > arr[j+1]) 
-              then
-                do
-                  temp = arr[j];
-                  arr[j] = arr[j+1];
-                  arr[j+1] = temp;
-                end
-              else
-	        ;
-            j = j+1;
-          end;
-        i = i+1;
-      end;
-  end
-   
-printArray(integer arr[], integer size) : void
-  local
-    integer n;
-    integer i; 
-  do
-    n = size;
-    i = 0; 
-    while (i<n)
-      do
-        write(arr[i]);
-        i = i+1;
-      end;
-  end 
 
-main  
-  local
-    integer arr[7]; 
+class POLYNOMIAL {
+	public evaluate(float x) : float;
+};
+
+class LINEAR inherits POLYNOMIAL {
+	private float a;
+	private float b;
+	
+	public build(float A, float B) : LINEAR;
+	public evaluate(float x) : float;
+};
+
+class QUADRATIC inherits POLYNOMIAL {
+	private float a;
+	private float b;
+	private float c;
+	
+	public build(float A, float B, float C) : QUADRATIC;
+	public evaluate(float x) : float;
+};
+
+POLYNOMIAL::evaluate(float x) : float
   do
-    arr[0] = 64;
-    arr[1] = 34;
-    arr[2] = 25;
-    arr[3] = 12;
-    arr[4] = 22;
-    arr[5] = 11;
-    arr[6] = 90;
-    printarray(arr, 7); 
-    bubbleSort(arr, 7);
-    printarray(arr, 7); 
+    return (0);
+  end
+
+LINEAR::evaluate(float x) : float
+  local
+    float result;
+  do
+    result = 0.0;
+    result = a * x + b;
+    return (result);
+  end
+  
+QUADRATIC::evaluate(float x) : float
+  local
+    float result;
+  do    //Using Horner's method
+    result = a;
+    result = result * x + b;
+    result = result * x + c;
+    return (result);
+  end
+  
+LINEAR::build(float A, float B) : LINEAR
+  local
+    LINEAR new_function;
+  do
+    new_function.a = A();
+    new_function.b = B;
+    return (new_function);
+  end  
+  
+QUADRATIC::build(float A, float B, float C) : QUADRATIC
+  local
+    QUADRATIC new_function;
+  do
+    new_function.a = A;
+    new_function.b = B;
+    new_function.c = C;
+    return (new_function);
+  end
+  
+
+
+main
+  local
+    linear f1;
+    quadratic f2;
+    integer counter;
+  do
+    f1 = f1.build2[1+1][10];
+    f2 = f2.build(-2.0, 1.0, 0.0);
+    counter = 1;
+	
+    while(counter <= 10)
+      do
+        write(counter);
+        write(f1.evaluate(counter));
+        write(f2.evaluate(counter));
+      end;
   end

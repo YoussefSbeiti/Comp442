@@ -1,12 +1,12 @@
 from Grammar import *
 from Parser import *
 
-grammar = Grammar('../outfile.grm' , '../first.txt' , '../follow.txt')
+grammar = Grammar('../outfile.grm' , '../outfile.grm.first' , '../outfile.grm.follow')
 parser = Parser(grammar , '../polynomial.src')
 
 #parser._lex('../lexpositivegrading.outlextokens')
 #grammar.printRules()
 parser.generateParseTable()
 parser.printParseTableHTML()
-parser.parse()
+print(parser.parse())
 #print(parser.table)
