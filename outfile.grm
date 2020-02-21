@@ -61,13 +61,11 @@
 <functionCall> ::= <idnestid> 
 
 <idnestLF> ::= <rept-idnestLF0> 
-<idnestLF> ::= <indice> <rept-idnestLF1> 
-<idnestLF> ::= 'LPAREN' <aParams> 'RPAREN' 
 
-<idnestLFLF> ::= <rept-idnestLFLF0> 
+<idnestLFLF> ::= <indice> <rept-idnestLFLF1> 
 <idnestLFLF> ::= 'LPAREN' <aParams> 'RPAREN' 
 
-<idnestid> ::= 'id' <idnestLF> 
+<idnestid> ::= 'id' <opt-idnestid1> <idnestLF> 
 
 <indice> ::= 'LSB' <arithExpr> 'RSB' 
 
@@ -87,6 +85,12 @@
 
 <opt-funcBody0> ::= 'local' <rept-opt-funcBody01> 
 <opt-funcBody0> ::= EPSILON 
+
+<opt-idnestLF3> ::= <idnestLFLF> 
+<opt-idnestLF3> ::= EPSILON 
+
+<opt-idnestid1> ::= <idnestLFLF> 
+<opt-idnestid1> ::= EPSILON 
 
 <prog> ::= <rept-prog0> <rept-prog1> 'main' <funcBody> 
 
@@ -117,14 +121,11 @@
 <rept-funcBody2> ::= <statement> <rept-funcBody2> 
 <rept-funcBody2> ::= EPSILON 
 
-<rept-idnestLF0> ::= 'DOT' 'id' <idnestLFLF> <rept-idnestLF0> 
+<rept-idnestLF0> ::= 'DOT' 'id' <opt-idnestLF3> <rept-idnestLF0> 
 <rept-idnestLF0> ::= EPSILON 
 
-<rept-idnestLF1> ::= <indice> <rept-idnestLF1> 
-<rept-idnestLF1> ::= EPSILON 
-
-<rept-idnestLFLF0> ::= <indice> <rept-idnestLFLF0> 
-<rept-idnestLFLF0> ::= EPSILON 
+<rept-idnestLFLF1> ::= <indice> <rept-idnestLFLF1> 
+<rept-idnestLFLF1> ::= EPSILON 
 
 <rept-memberDecl2> ::= <arraySize> <rept-memberDecl2> 
 <rept-memberDecl2> ::= EPSILON 

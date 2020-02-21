@@ -40,7 +40,7 @@ printArray(integer arr[], integer size) : void
       do
         write(arr[i]);
         i = i+1;
-      end;
+      end
   end 
 
 main  

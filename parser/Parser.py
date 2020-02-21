@@ -9,7 +9,8 @@ class Parser:
         lexer = Lexer()
         lexer.build()
         self.lexer = lexer.lexer
-        #self.lexer.lineno += 1
+        self.lexer.lineno += 1
+        
         file = open(srcPath , 'r')
         self.lexer.input(file.read())
         file.close()
@@ -101,7 +102,7 @@ class Parser:
         a = self.nextToken()
         error= False;
         
-        while stack[-1] != '$' :
+        while stack[-1] != '$' and a.type != "$":
             #x = top()
             x = stack[-1] 
             
@@ -119,7 +120,7 @@ class Parser:
                         a = self.nextToken()
                     
                 else: 
-                    print('found T error')
+                    print('found Terminal error')
                     a = self.skipError(a,stack)
                     error = True 
             else:
@@ -135,7 +136,7 @@ class Parser:
                     
                     stack.extend(elements)
                 else: 
-                    print('found error')
+                    print('found non terminal error')
                     a = self.skipError(a,stack)
                     error = True
         
@@ -154,33 +155,37 @@ class Parser:
         top = stack[-1]
         first = self.grammar.firstSets
         follow = self.grammar.followSets
-        
+        rtrnTok = lookAhead
+
         if top not in self.grammar.terminals:
 
             print("when error top of stack is NT")
 
-            if lookAhead.type == '$' or lookAhead.type in self.grammar.followSets[stack[-1]]:
-                print('popping stack to resume parse. Token = ' +  str(lookAhead))
-                stack.pop()   
-                return lookAhead         
+            if rtrnTok.type == '$' or rtrnTok.type in self.grammar.followSets[top]:
+                print('popping stack to resume parse. Token = ' +  str(rtrnTok))
+                stack.pop()           
             else: 
-                print(lookAhead)
-                while lookAhead.type not in first[top] and ('EPSILON' in first[top] and lookAhead.type not in follow[top]):
-                    #if lookAhead.type == 'SEMICOLON':
-                        #print('finding sync token. Possibilities' +  str(first[top]) + " ")
-                        #if('EPSILON' in first[top]):
-                            #print('lookAhead.type = ' + lookAhead.type + ' not in : ' + str(follow[top]) +  str(lookAhead.type not in follow[top]))
+                while (rtrnTok.type not in first[top] or 'EPSILON' in first[top] and rtrnTok.type not in follow[top]) and rtrnTok.type != "$":
+                    rtrnTok = self.nextToken()
                     
-                    return self.nextToken()
-                    #print('current token = ' + str(lookAhead))
+                    print('finding sync token. Possibilities' +  str(first[top]) + " ")
+                    if('EPSILON' in first[top]):
+                        print(str(follow[top]))
+                    
+                    
+                    print('current token = ' + str(rtrnTok))
+                print('found token that matches Non Terminal ' + str(rtrnTok) +  ('Follow' if rtrnTok.type in follow[top] else 'First') )
         else : 
             
-            while lookAhead.type != top and lookAhead.type != '$':
-                return self.nextToken()
+            while rtrnTok.type != top and rtrnTok.type != '$':
+                print('finding sync token: ' + top)
+                print('current token = ' + str(rtrnTok))
+                rtrnTok =  self.nextToken()
                 #print('skipping token' + str(lookAhead))
                 #print('here + lh' + str(lookAhead.type != '$' or lookAhead.type != top ))
-            #stack.pop()
-                
+            print('found token that matches terminal:' + str(rtrnTok))
+
+        return rtrnTok   
         file.close()
 
 

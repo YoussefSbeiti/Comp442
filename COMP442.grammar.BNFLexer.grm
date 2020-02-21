@@ -42,14 +42,14 @@
               | 'not' <factor>
               | <sign> <factor>
 
-<idnestid> ::=  'id' <idnestLF>
+<idnestid> ::=  'id' [[<idnestLFLF>]] <idnestLF>
 
 
 <variable>     ::= <idnestid> 
 <functionCall> ::= <idnestid> 
 
-<idnestLF> ::=     {{ 'DOT' 'id' <idnestLFLF> }}  | <indice> {{<indice>}} | 'LPAREN' <aParams> 'RPAREN'
-<idnestLFLF> ::= {{<indice>}} |   'LPAREN' <aParams> 'RPAREN' 
+<idnestLF> ::=     {{ 'DOT' 'id' [[<idnestLFLF>]] }}  
+<idnestLFLF> ::= <indice>{{<indice>}} |   'LPAREN' <aParams> 'RPAREN' 
 
 <indice>       ::= 'LSB' <arithExpr> 'RSB'
 
