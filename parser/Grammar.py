@@ -74,7 +74,7 @@ class Grammar:
                 try:
                     self.firstSets[lineSplit[0]] = ast.literal_eval(lineSplit[1].strip().replace('$' , '\'$\''))
                 except:
-                    print("Error in getting data from FirstFile")
+                    print("Error in getting data from FirstFile :" + lineSplit[0].strip().replace('$' , '\'$\''))
     
     def addRule(self, rule):
         self.rules.append(rule)

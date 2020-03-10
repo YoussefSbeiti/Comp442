@@ -5,7 +5,7 @@ class POLYNOMIAL {
 
 class LINEAR inherits POLYNOMIAL {
 	private float a;
-	private float b.p[;
+	private float b;
 	
 	public build(float A, float B) : LINEAR;
 	public evaluate(float x) : float;
@@ -31,7 +31,7 @@ LINEAR::evaluate(float x) : float
     float result;
   do
     result = 0.0;
-    result = a * x + b;
+    result = a.a[5].lll * x + b;
     return (result);
   end
   
@@ -72,10 +72,15 @@ main
     quadratic f2;
     integer counter;
   do
-    f1 = f1.build(2, 3.5);
-    f2 = f2.build(-2.0, 1.0, 0.0);
-    counter = 1;
-	
+    if(n<=0)
+    then
+      do
+      f1 = f1.build(2, 3.5);
+      f2 = f2.build(-2.0, 1.0, 0.0);
+      counter = 1;
+      end
+    else 
+      ;
     while(counter <= 10)
       do
         write(counter);

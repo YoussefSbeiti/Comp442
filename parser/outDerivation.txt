@@ -1,206 +1,698 @@
 ---------------------------------------------------------------
-currentStack['$', '<START>']. Token to read: LexToken(class,'class',2,39)
+currentStack['$', '<START>']. Token to read: LexToken(main,'main',2,0)
 found rule to use: <START> ->  <prog> 
 popping <START>adding ['<prog>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<prog>']. Token to read: LexToken(class,'class',2,39)
+currentStack['$', '<prog>']. Token to read: LexToken(main,'main',2,0)
 found rule to use: <prog> ->  <rept-prog0> <rept-prog1> main <funcBody> 
 popping <prog>adding ['<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>']. Token to read: LexToken(class,'class',2,39)
-found rule to use: <rept-prog0> ->  <classDecl> <rept-prog0> 
-popping <rept-prog0>adding ['<rept-prog0>', '<classDecl>'] to stack
+currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>']. Token to read: LexToken(main,'main',2,0)
+found rule to use: <rept-prog0> ->  EPSILON 
+popping <rept-prog0>adding ['EPSILON'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', '<classDecl>']. Token to read: LexToken(class,'class',2,39)
-found rule to use: <classDecl> ->  class id <opt-classDecl2> LCB <rept-classDecl4> RCB SEMICOLON 
-popping <classDecl>adding ['SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>', 'id', 'class'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>', 'id', 'class']. Token to read: LexToken(class,'class',2,39)
-popping terminal class
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>', 'id']. Token to read: LexToken(id,'POLYNOMIAL',2,45)
-popping terminal id
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>']. Token to read: LexToken(LCB,'{',2,56)
-found rule to use: <opt-classDecl2> ->  EPSILON 
-popping <opt-classDecl2>adding ['EPSILON'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', 'EPSILON']. Token to read: LexToken(LCB,'{',2,56)
+currentStack['$', '<funcBody>', 'main', '<rept-prog1>', 'EPSILON']. Token to read: LexToken(main,'main',2,0)
 popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB']. Token to read: LexToken(LCB,'{',2,56)
-popping terminal LCB
+currentStack['$', '<funcBody>', 'main', '<rept-prog1>']. Token to read: LexToken(main,'main',2,0)
+found rule to use: <rept-prog1> ->  EPSILON 
+popping <rept-prog1>adding ['EPSILON'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>']. Token to read: LexToken(public,'public',3,59)
-found rule to use: <rept-classDecl4> ->  <visibility> <memberDecl> <rept-classDecl4> 
-popping <rept-classDecl4>adding ['<rept-classDecl4>', '<memberDecl>', '<visibility>'] to stack
+currentStack['$', '<funcBody>', 'main', 'EPSILON']. Token to read: LexToken(main,'main',2,0)
+popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>', '<visibility>']. Token to read: LexToken(public,'public',3,59)
-found rule to use: <visibility> ->  public 
-popping <visibility>adding ['public'] to stack
+currentStack['$', '<funcBody>', 'main']. Token to read: LexToken(main,'main',2,0)
+popping terminal main
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>', 'public']. Token to read: LexToken(public,'public',3,59)
-popping terminal public
+currentStack['$', '<funcBody>']. Token to read: LexToken(local,'local',3,7)
+found rule to use: <funcBody> ->  <opt-funcBody0> do <rept-funcBody2> end 
+popping <funcBody>adding ['end', '<rept-funcBody2>', 'do', '<opt-funcBody0>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>']. Token to read: LexToken(id,'evaluate',3,66)
-found rule to use: <memberDecl> ->  id <memberDeclLF> 
-popping <memberDecl>adding ['<memberDeclLF>', 'id'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<opt-funcBody0>']. Token to read: LexToken(local,'local',3,7)
+found rule to use: <opt-funcBody0> ->  local <rept-opt-funcBody01> 
+popping <opt-funcBody0>adding ['<rept-opt-funcBody01>', 'local'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDeclLF>', 'id']. Token to read: LexToken(id,'evaluate',3,66)
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'local']. Token to read: LexToken(local,'local',3,7)
+popping terminal local
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>']. Token to read: LexToken(integer,'integer',4,17)
+found rule to use: <rept-opt-funcBody01> ->  <varDecl> <rept-opt-funcBody01> 
+popping <rept-opt-funcBody01>adding ['<rept-opt-funcBody01>', '<varDecl>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', '<varDecl>']. Token to read: LexToken(integer,'integer',4,17)
+found rule to use: <varDecl> ->  <type> id <rept-varDecl2> SEMICOLON 
+popping <varDecl>adding ['SEMICOLON', '<rept-varDecl2>', 'id', '<type>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>', 'id', '<type>']. Token to read: LexToken(integer,'integer',4,17)
+found rule to use: <type> ->  integer 
+popping <type>adding ['integer'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>', 'id', 'integer']. Token to read: LexToken(integer,'integer',4,17)
+popping terminal integer
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>', 'id']. Token to read: LexToken(id,'x',4,25)
 popping terminal id
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDeclLF>']. Token to read: LexToken(LPAREN,'(',3,74)
-found rule to use: <memberDeclLF> ->  LPAREN <fParams> RPAREN COLON <funcDeclLF> 
-popping <memberDeclLF>adding ['<funcDeclLF>', 'COLON', 'RPAREN', '<fParams>', 'LPAREN'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>']. Token to read: LexToken(SEMICOLON,';',4,26)
+found rule to use: <rept-varDecl2> ->  EPSILON 
+popping <rept-varDecl2>adding ['EPSILON'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<fParams>', 'LPAREN']. Token to read: LexToken(LPAREN,'(',3,74)
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',4,26)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',4,26)
+popping terminal SEMICOLON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>']. Token to read: LexToken(float,'float',5,29)
+found rule to use: <rept-opt-funcBody01> ->  <varDecl> <rept-opt-funcBody01> 
+popping <rept-opt-funcBody01>adding ['<rept-opt-funcBody01>', '<varDecl>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', '<varDecl>']. Token to read: LexToken(float,'float',5,29)
+found rule to use: <varDecl> ->  <type> id <rept-varDecl2> SEMICOLON 
+popping <varDecl>adding ['SEMICOLON', '<rept-varDecl2>', 'id', '<type>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>', 'id', '<type>']. Token to read: LexToken(float,'float',5,29)
+found rule to use: <type> ->  float 
+popping <type>adding ['float'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>', 'id', 'float']. Token to read: LexToken(float,'float',5,29)
+popping terminal float
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>', 'id']. Token to read: LexToken(id,'num',5,35)
+popping terminal id
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', '<rept-varDecl2>']. Token to read: LexToken(SEMICOLON,';',5,38)
+found rule to use: <rept-varDecl2> ->  EPSILON 
+popping <rept-varDecl2>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',5,38)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',5,38)
+popping terminal SEMICOLON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', '<rept-opt-funcBody01>']. Token to read: LexToken(do,'do',6,42)
+found rule to use: <rept-opt-funcBody01> ->  EPSILON 
+popping <rept-opt-funcBody01>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do', 'EPSILON']. Token to read: LexToken(do,'do',6,42)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'do']. Token to read: LexToken(do,'do',6,42)
+popping terminal do
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>']. Token to read: LexToken(read,'read',7,49)
+found rule to use: <rept-funcBody2> ->  <statement> <rept-funcBody2> 
+popping <rept-funcBody2>adding ['<rept-funcBody2>', '<statement>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statement>']. Token to read: LexToken(read,'read',7,49)
+found rule to use: <statement> ->  read LPAREN <variable> RPAREN SEMICOLON 
+popping <statement>adding ['SEMICOLON', 'RPAREN', '<variable>', 'LPAREN', 'read'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<variable>', 'LPAREN', 'read']. Token to read: LexToken(read,'read',7,49)
+popping terminal read
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<variable>', 'LPAREN']. Token to read: LexToken(LPAREN,'(',7,53)
 popping terminal LPAREN
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<fParams>']. Token to read: LexToken(float,'float',3,75)
-found rule to use: <fParams> ->  <type> id <rept-fParams2> <rept-fParams3> 
-popping <fParams>adding ['<rept-fParams3>', '<rept-fParams2>', 'id', '<type>'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<variable>']. Token to read: LexToken(id,'x',7,54)
+found rule to use: <variable> ->  <idnestid> 
+popping <variable>adding ['<idnestid>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<rept-fParams3>', '<rept-fParams2>', 'id', '<type>']. Token to read: LexToken(float,'float',3,75)
-found rule to use: <type> ->  float 
-popping <type>adding ['float'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<idnestid>']. Token to read: LexToken(id,'x',7,54)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<rept-fParams3>', '<rept-fParams2>', 'id', 'float']. Token to read: LexToken(float,'float',3,75)
-popping terminal float
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<rept-fParams3>', '<rept-fParams2>', 'id']. Token to read: LexToken(id,'x',3,81)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'x',7,54)
 popping terminal id
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<rept-fParams3>', '<rept-fParams2>']. Token to read: LexToken(RPAREN,')',3,82)
-found rule to use: <rept-fParams2> ->  EPSILON 
-popping <rept-fParams2>adding ['EPSILON'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(RPAREN,')',7,55)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<rept-fParams3>', 'EPSILON']. Token to read: LexToken(RPAREN,')',3,82)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<idnestLF>', 'EPSILON']. Token to read: LexToken(RPAREN,')',7,55)
 popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', '<rept-fParams3>']. Token to read: LexToken(RPAREN,')',3,82)
-found rule to use: <rept-fParams3> ->  EPSILON 
-popping <rept-fParams3>adding ['EPSILON'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<idnestLF>']. Token to read: LexToken(RPAREN,')',7,55)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN', 'EPSILON']. Token to read: LexToken(RPAREN,')',3,82)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<rept-idnestLF0>']. Token to read: LexToken(RPAREN,')',7,55)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', 'EPSILON']. Token to read: LexToken(RPAREN,')',7,55)
 popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON', 'RPAREN']. Token to read: LexToken(RPAREN,')',3,82)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN']. Token to read: LexToken(RPAREN,')',7,55)
 popping terminal RPAREN
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>', 'COLON']. Token to read: LexToken(COLON,':',3,84)
-popping terminal COLON
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<funcDeclLF>']. Token to read: LexToken(float,'float',3,86)
-found rule to use: <funcDeclLF> ->  <type> SEMICOLON 
-popping <funcDeclLF>adding ['SEMICOLON', '<type>'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<type>']. Token to read: LexToken(float,'float',3,86)
-found rule to use: <type> ->  float 
-popping <type>adding ['float'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', 'float']. Token to read: LexToken(float,'float',3,86)
-popping terminal float
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',3,91)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',7,56)
 popping terminal SEMICOLON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>']. Token to read: LexToken(RCB,'}',4,93)
-found rule to use: <rept-classDecl4> ->  EPSILON 
-popping <rept-classDecl4>adding ['EPSILON'] to stack
+currentStack['$', 'end', '<rept-funcBody2>']. Token to read: LexToken(id,'num',8,59)
+found rule to use: <rept-funcBody2> ->  <statement> <rept-funcBody2> 
+popping <rept-funcBody2>adding ['<rept-funcBody2>', '<statement>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', 'EPSILON']. Token to read: LexToken(RCB,'}',4,93)
+currentStack['$', 'end', '<rept-funcBody2>', '<statement>']. Token to read: LexToken(id,'num',8,59)
+found rule to use: <statement> ->  <idnestid> <statementLF> 
+popping <statement>adding ['<statementLF>', '<idnestid>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', '<idnestid>']. Token to read: LexToken(id,'num',8,59)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'num',8,59)
+popping terminal id
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(ASSIGN,'=',8,63)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', '<idnestLF>', 'EPSILON']. Token to read: LexToken(ASSIGN,'=',8,63)
 popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB']. Token to read: LexToken(RCB,'}',4,93)
-popping terminal RCB
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', '<idnestLF>']. Token to read: LexToken(ASSIGN,'=',8,63)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',4,94)
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', '<rept-idnestLF0>']. Token to read: LexToken(ASSIGN,'=',8,63)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>', 'EPSILON']. Token to read: LexToken(ASSIGN,'=',8,63)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statementLF>']. Token to read: LexToken(ASSIGN,'=',8,63)
+found rule to use: <statementLF> ->  <assignOp> <expr> SEMICOLON 
+popping <statementLF>adding ['SEMICOLON', '<expr>', '<assignOp>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<expr>', '<assignOp>']. Token to read: LexToken(ASSIGN,'=',8,63)
+found rule to use: <assignOp> ->  ASSIGN 
+popping <assignOp>adding ['ASSIGN'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<expr>', 'ASSIGN']. Token to read: LexToken(ASSIGN,'=',8,63)
+popping terminal ASSIGN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<expr>']. Token to read: LexToken(intNum,'1',8,65)
+found rule to use: <expr> ->  <arithExpr> <exprLF> 
+popping <expr>adding ['<exprLF>', '<arithExpr>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<arithExpr>']. Token to read: LexToken(intNum,'1',8,65)
+found rule to use: <arithExpr> ->  <term> <rightrec-arithExpr> 
+popping <arithExpr>adding ['<rightrec-arithExpr>', '<term>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(intNum,'1',8,65)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(intNum,'1',8,65)
+found rule to use: <factor> ->  intNum 
+popping <factor>adding ['intNum'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', 'intNum']. Token to read: LexToken(intNum,'1',8,65)
+popping terminal intNum
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(SEMICOLON,';',8,66)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',8,66)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>']. Token to read: LexToken(SEMICOLON,';',8,66)
+found rule to use: <rightrec-arithExpr> ->  EPSILON 
+popping <rightrec-arithExpr>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',8,66)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<exprLF>']. Token to read: LexToken(SEMICOLON,';',8,66)
+found rule to use: <exprLF> ->  EPSILON 
+popping <exprLF>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',8,66)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',8,66)
 popping terminal SEMICOLON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>']. Token to read: LexToken(class,'class',6,97)
-found rule to use: <rept-prog0> ->  <classDecl> <rept-prog0> 
-popping <rept-prog0>adding ['<rept-prog0>', '<classDecl>'] to stack
+currentStack['$', 'end', '<rept-funcBody2>']. Token to read: LexToken(while,'while',9,69)
+found rule to use: <rept-funcBody2> ->  <statement> <rept-funcBody2> 
+popping <rept-funcBody2>adding ['<rept-funcBody2>', '<statement>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', '<classDecl>']. Token to read: LexToken(class,'class',6,97)
-found rule to use: <classDecl> ->  class id <opt-classDecl2> LCB <rept-classDecl4> RCB SEMICOLON 
-popping <classDecl>adding ['SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>', 'id', 'class'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', '<statement>']. Token to read: LexToken(while,'while',9,69)
+found rule to use: <statement> ->  while LPAREN <relExpr> RPAREN <statBlock> SEMICOLON 
+popping <statement>adding ['SEMICOLON', '<statBlock>', 'RPAREN', '<relExpr>', 'LPAREN', 'while'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>', 'id', 'class']. Token to read: LexToken(class,'class',6,97)
-popping terminal class
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<relExpr>', 'LPAREN', 'while']. Token to read: LexToken(while,'while',9,69)
+popping terminal while
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>', 'id']. Token to read: LexToken(id,'LINEAR',6,103)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<relExpr>', 'LPAREN']. Token to read: LexToken(LPAREN,'(',9,74)
+popping terminal LPAREN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<relExpr>']. Token to read: LexToken(id,'x',9,75)
+found rule to use: <relExpr> ->  <arithExpr> <relOp> <arithExpr> 
+popping <relExpr>adding ['<arithExpr>', '<relOp>', '<arithExpr>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<arithExpr>']. Token to read: LexToken(id,'x',9,75)
+found rule to use: <arithExpr> ->  <term> <rightrec-arithExpr> 
+popping <arithExpr>adding ['<rightrec-arithExpr>', '<term>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(id,'x',9,75)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(id,'x',9,75)
+found rule to use: <factor> ->  <idnestid> 
+popping <factor>adding ['<idnestid>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestid>']. Token to read: LexToken(id,'x',9,75)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'x',9,75)
 popping terminal id
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<opt-classDecl2>']. Token to read: LexToken(inherits,'inherits',6,110)
-found rule to use: <opt-classDecl2> ->  inherits id <rept-opt-classDecl22> 
-popping <opt-classDecl2>adding ['<rept-opt-classDecl22>', 'id', 'inherits'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(notEQ,'<>',9,77)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<rept-opt-classDecl22>', 'id', 'inherits']. Token to read: LexToken(inherits,'inherits',6,110)
-popping terminal inherits
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<rept-opt-classDecl22>', 'id']. Token to read: LexToken(id,'POLYNOMIAL',6,119)
-popping terminal id
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', '<rept-opt-classDecl22>']. Token to read: LexToken(LCB,'{',6,130)
-found rule to use: <rept-opt-classDecl22> ->  EPSILON 
-popping <rept-opt-classDecl22>adding ['EPSILON'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB', 'EPSILON']. Token to read: LexToken(LCB,'{',6,130)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,77)
 popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'LCB']. Token to read: LexToken(LCB,'{',6,130)
-popping terminal LCB
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>']. Token to read: LexToken(notEQ,'<>',9,77)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>']. Token to read: LexToken(private,'private',7,133)
-found rule to use: <rept-classDecl4> ->  <visibility> <memberDecl> <rept-classDecl4> 
-popping <rept-classDecl4>adding ['<rept-classDecl4>', '<memberDecl>', '<visibility>'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', '<rept-idnestLF0>']. Token to read: LexToken(notEQ,'<>',9,77)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>', '<visibility>']. Token to read: LexToken(private,'private',7,133)
-found rule to use: <visibility> ->  private 
-popping <visibility>adding ['private'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>', 'private']. Token to read: LexToken(private,'private',7,133)
-popping terminal private
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>']. Token to read: LexToken(float,'float',7,141)
-found rule to use: <memberDecl> ->  float id <rept-memberDecl2> SEMICOLON 
-popping <memberDecl>adding ['SEMICOLON', '<rept-memberDecl2>', 'id', 'float'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<rept-memberDecl2>', 'id', 'float']. Token to read: LexToken(float,'float',7,141)
-popping terminal float
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<rept-memberDecl2>', 'id']. Token to read: LexToken(id,'a',7,147)
-popping terminal id
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<rept-memberDecl2>']. Token to read: LexToken(SEMICOLON,';',7,148)
-found rule to use: <rept-memberDecl2> ->  EPSILON 
-popping <rept-memberDecl2>adding ['EPSILON'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',7,148)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,77)
 popping terminal EPSILON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',7,148)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(notEQ,'<>',9,77)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,77)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', '<rightrec-arithExpr>']. Token to read: LexToken(notEQ,'<>',9,77)
+found rule to use: <rightrec-arithExpr> ->  EPSILON 
+popping <rightrec-arithExpr>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,77)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', '<relOp>']. Token to read: LexToken(notEQ,'<>',9,77)
+found rule to use: <relOp> ->  notEQ 
+popping <relOp>adding ['notEQ'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>', 'notEQ']. Token to read: LexToken(notEQ,'<>',9,77)
+popping terminal notEQ
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<arithExpr>']. Token to read: LexToken(intNum,'442',9,80)
+found rule to use: <arithExpr> ->  <term> <rightrec-arithExpr> 
+popping <arithExpr>adding ['<rightrec-arithExpr>', '<term>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(intNum,'442',9,80)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(intNum,'442',9,80)
+found rule to use: <factor> ->  intNum 
+popping <factor>adding ['intNum'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', 'intNum']. Token to read: LexToken(intNum,'442',9,80)
+popping terminal intNum
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(or,'or',9,84)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(or,'or',9,84)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>']. Token to read: LexToken(or,'or',9,84)
+found rule to use: <rightrec-arithExpr> ->  <addOp> <term> <rightrec-arithExpr> 
+popping <rightrec-arithExpr>adding ['<rightrec-arithExpr>', '<term>', '<addOp>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<term>', '<addOp>']. Token to read: LexToken(or,'or',9,84)
+found rule to use: <addOp> ->  or 
+popping <addOp>adding ['or'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<term>', 'or']. Token to read: LexToken(or,'or',9,84)
+popping terminal or
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(id,'x',9,87)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(id,'x',9,87)
+found rule to use: <factor> ->  <idnestid> 
+popping <factor>adding ['<idnestid>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestid>']. Token to read: LexToken(id,'x',9,87)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'x',9,87)
+popping terminal id
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(notEQ,'<>',9,89)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,89)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>']. Token to read: LexToken(notEQ,'<>',9,89)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', '<rept-idnestLF0>']. Token to read: LexToken(notEQ,'<>',9,89)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,89)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(notEQ,'<>',9,89)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,89)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', '<rightrec-arithExpr>']. Token to read: LexToken(notEQ,'<>',9,89)
+found rule to use: <rightrec-arithExpr> ->  EPSILON 
+popping <rightrec-arithExpr>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN', 'EPSILON']. Token to read: LexToken(notEQ,'<>',9,89)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN']. Token to read: LexToken(notEQ,'<>',9,89)
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>', 'RPAREN']. Token to read: LexToken(RPAREN,')',9,96)
+popping terminal RPAREN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', '<statBlock>']. Token to read: LexToken(do,'do',10,101)
+found rule to use: <statBlock> ->  do <rept-statBlock1> end 
+popping <statBlock>adding ['end', '<rept-statBlock1>', 'do'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'do']. Token to read: LexToken(do,'do',10,101)
+popping terminal do
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>']. Token to read: LexToken(read,'read',11,109)
+found rule to use: <rept-statBlock1> ->  <statement> <rept-statBlock1> 
+popping <rept-statBlock1>adding ['<rept-statBlock1>', '<statement>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statement>']. Token to read: LexToken(read,'read',11,109)
+found rule to use: <statement> ->  read LPAREN <variable> RPAREN SEMICOLON 
+popping <statement>adding ['SEMICOLON', 'RPAREN', '<variable>', 'LPAREN', 'read'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<variable>', 'LPAREN', 'read']. Token to read: LexToken(read,'read',11,109)
+popping terminal read
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<variable>', 'LPAREN']. Token to read: LexToken(LPAREN,'(',11,113)
+popping terminal LPAREN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<variable>']. Token to read: LexToken(id,'x',11,114)
+found rule to use: <variable> ->  <idnestid> 
+popping <variable>adding ['<idnestid>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<idnestid>']. Token to read: LexToken(id,'x',11,114)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'x',11,114)
+popping terminal id
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(RPAREN,')',11,115)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<idnestLF>', 'EPSILON']. Token to read: LexToken(RPAREN,')',11,115)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<idnestLF>']. Token to read: LexToken(RPAREN,')',11,115)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', '<rept-idnestLF0>']. Token to read: LexToken(RPAREN,')',11,115)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN', 'EPSILON']. Token to read: LexToken(RPAREN,')',11,115)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'RPAREN']. Token to read: LexToken(RPAREN,')',11,115)
+popping terminal RPAREN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',11,116)
 popping terminal SEMICOLON
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>']. Token to read: LexToken(private,'private',8,151)
-found rule to use: <rept-classDecl4> ->  <visibility> <memberDecl> <rept-classDecl4> 
-popping <rept-classDecl4>adding ['<rept-classDecl4>', '<memberDecl>', '<visibility>'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>']. Token to read: LexToken(id,'num',12,123)
+found rule to use: <rept-statBlock1> ->  <statement> <rept-statBlock1> 
+popping <rept-statBlock1>adding ['<rept-statBlock1>', '<statement>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>', '<visibility>']. Token to read: LexToken(private,'private',8,151)
-found rule to use: <visibility> ->  private 
-popping <visibility>adding ['private'] to stack
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statement>']. Token to read: LexToken(id,'num',12,123)
+found rule to use: <statement> ->  <idnestid> <statementLF> 
+popping <statement>adding ['<statementLF>', '<idnestid>'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>', 'private']. Token to read: LexToken(private,'private',8,151)
-popping terminal private
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', '<idnestid>']. Token to read: LexToken(id,'num',12,123)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', '<memberDecl>']. Token to read: LexToken(float,'float',8,159)
-found rule to use: <memberDecl> ->  float id <rept-memberDecl2> SEMICOLON 
-popping <memberDecl>adding ['SEMICOLON', '<rept-memberDecl2>', 'id', 'float'] to stack
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<rept-memberDecl2>', 'id', 'float']. Token to read: LexToken(float,'float',8,159)
-popping terminal float
----------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<rept-memberDecl2>', 'id']. Token to read: LexToken(id,'b',8,165)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'num',12,123)
 popping terminal id
 ---------------------------------------------------------------
-currentStack['$', '<funcBody>', 'main', '<rept-prog1>', '<rept-prog0>', 'SEMICOLON', 'RCB', '<rept-classDecl4>', 'SEMICOLON', '<rept-memberDecl2>']. Token to read: LexToken(DOT,'.',8,166)
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(ASSIGN,'=',12,127)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', '<idnestLF>', 'EPSILON']. Token to read: LexToken(ASSIGN,'=',12,127)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', '<idnestLF>']. Token to read: LexToken(ASSIGN,'=',12,127)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', '<rept-idnestLF0>']. Token to read: LexToken(ASSIGN,'=',12,127)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>', 'EPSILON']. Token to read: LexToken(ASSIGN,'=',12,127)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', '<statementLF>']. Token to read: LexToken(ASSIGN,'=',12,127)
+found rule to use: <statementLF> ->  <assignOp> <expr> SEMICOLON 
+popping <statementLF>adding ['SEMICOLON', '<expr>', '<assignOp>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<expr>', '<assignOp>']. Token to read: LexToken(ASSIGN,'=',12,127)
+found rule to use: <assignOp> ->  ASSIGN 
+popping <assignOp>adding ['ASSIGN'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<expr>', 'ASSIGN']. Token to read: LexToken(ASSIGN,'=',12,127)
+popping terminal ASSIGN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<expr>']. Token to read: LexToken(id,'num',12,129)
+found rule to use: <expr> ->  <arithExpr> <exprLF> 
+popping <expr>adding ['<exprLF>', '<arithExpr>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<arithExpr>']. Token to read: LexToken(id,'num',12,129)
+found rule to use: <arithExpr> ->  <term> <rightrec-arithExpr> 
+popping <arithExpr>adding ['<rightrec-arithExpr>', '<term>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(id,'num',12,129)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(id,'num',12,129)
+found rule to use: <factor> ->  <idnestid> 
+popping <factor>adding ['<idnestid>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestid>']. Token to read: LexToken(id,'num',12,129)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'num',12,129)
+popping terminal id
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(PLUS,'+',12,133)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', 'EPSILON']. Token to read: LexToken(PLUS,'+',12,133)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>']. Token to read: LexToken(PLUS,'+',12,133)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<rept-idnestLF0>']. Token to read: LexToken(PLUS,'+',12,133)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', 'EPSILON']. Token to read: LexToken(PLUS,'+',12,133)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(PLUS,'+',12,133)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(PLUS,'+',12,133)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>']. Token to read: LexToken(PLUS,'+',12,133)
+found rule to use: <rightrec-arithExpr> ->  <addOp> <term> <rightrec-arithExpr> 
+popping <rightrec-arithExpr>adding ['<rightrec-arithExpr>', '<term>', '<addOp>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<term>', '<addOp>']. Token to read: LexToken(PLUS,'+',12,133)
+found rule to use: <addOp> ->  PLUS 
+popping <addOp>adding ['PLUS'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<term>', 'PLUS']. Token to read: LexToken(PLUS,'+',12,133)
+popping terminal PLUS
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(intNum,'1',12,135)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(intNum,'1',12,135)
+found rule to use: <factor> ->  intNum 
+popping <factor>adding ['intNum'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', 'intNum']. Token to read: LexToken(intNum,'1',12,135)
+popping terminal intNum
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(SEMICOLON,';',12,136)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',12,136)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', '<rightrec-arithExpr>']. Token to read: LexToken(SEMICOLON,';',12,136)
+found rule to use: <rightrec-arithExpr> ->  EPSILON 
+popping <rightrec-arithExpr>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',12,136)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', '<exprLF>']. Token to read: LexToken(SEMICOLON,';',12,136)
+found rule to use: <exprLF> ->  EPSILON 
+popping <exprLF>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON', 'EPSILON']. Token to read: LexToken(SEMICOLON,';',12,136)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',12,136)
+popping terminal SEMICOLON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', '<rept-statBlock1>']. Token to read: LexToken(end,'end',13,141)
+found rule to use: <rept-statBlock1> ->  EPSILON 
+popping <rept-statBlock1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end', 'EPSILON']. Token to read: LexToken(end,'end',13,141)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'end']. Token to read: LexToken(end,'end',13,141)
+popping terminal end
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',14,146)
+popping terminal SEMICOLON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>']. Token to read: LexToken(write,'write',15,149)
+found rule to use: <rept-funcBody2> ->  <statement> <rept-funcBody2> 
+popping <rept-funcBody2>adding ['<rept-funcBody2>', '<statement>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', '<statement>']. Token to read: LexToken(write,'write',15,149)
+found rule to use: <statement> ->  write LPAREN <expr> RPAREN SEMICOLON 
+popping <statement>adding ['SEMICOLON', 'RPAREN', '<expr>', 'LPAREN', 'write'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<expr>', 'LPAREN', 'write']. Token to read: LexToken(write,'write',15,149)
+popping terminal write
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<expr>', 'LPAREN']. Token to read: LexToken(LPAREN,'(',15,154)
+popping terminal LPAREN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<expr>']. Token to read: LexToken(id,'num',15,155)
+found rule to use: <expr> ->  <arithExpr> <exprLF> 
+popping <expr>adding ['<exprLF>', '<arithExpr>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<arithExpr>']. Token to read: LexToken(id,'num',15,155)
+found rule to use: <arithExpr> ->  <term> <rightrec-arithExpr> 
+popping <arithExpr>adding ['<rightrec-arithExpr>', '<term>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<term>']. Token to read: LexToken(id,'num',15,155)
+found rule to use: <term> ->  <factor> <rightrec-term> 
+popping <term>adding ['<rightrec-term>', '<factor>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<factor>']. Token to read: LexToken(id,'num',15,155)
+found rule to use: <factor> ->  <idnestid> 
+popping <factor>adding ['<idnestid>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestid>']. Token to read: LexToken(id,'num',15,155)
+found rule to use: <idnestid> ->  id <opt-idnestid1> <idnestLF> 
+popping <idnestid>adding ['<idnestLF>', '<opt-idnestid1>', 'id'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>', 'id']. Token to read: LexToken(id,'num',15,155)
+popping terminal id
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', '<opt-idnestid1>']. Token to read: LexToken(RPAREN,')',15,158)
+found rule to use: <opt-idnestid1> ->  EPSILON 
+popping <opt-idnestid1>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>', 'EPSILON']. Token to read: LexToken(RPAREN,')',15,158)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<idnestLF>']. Token to read: LexToken(RPAREN,')',15,158)
+found rule to use: <idnestLF> ->  <rept-idnestLF0> 
+popping <idnestLF>adding ['<rept-idnestLF0>'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', '<rept-idnestLF0>']. Token to read: LexToken(RPAREN,')',15,158)
+found rule to use: <rept-idnestLF0> ->  EPSILON 
+popping <rept-idnestLF0>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>', 'EPSILON']. Token to read: LexToken(RPAREN,')',15,158)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', '<rightrec-term>']. Token to read: LexToken(RPAREN,')',15,158)
+found rule to use: <rightrec-term> ->  EPSILON 
+popping <rightrec-term>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>', 'EPSILON']. Token to read: LexToken(RPAREN,')',15,158)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', '<rightrec-arithExpr>']. Token to read: LexToken(RPAREN,')',15,158)
+found rule to use: <rightrec-arithExpr> ->  EPSILON 
+popping <rightrec-arithExpr>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>', 'EPSILON']. Token to read: LexToken(RPAREN,')',15,158)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', '<exprLF>']. Token to read: LexToken(RPAREN,')',15,158)
+found rule to use: <exprLF> ->  EPSILON 
+popping <exprLF>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN', 'EPSILON']. Token to read: LexToken(RPAREN,')',15,158)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON', 'RPAREN']. Token to read: LexToken(RPAREN,')',15,158)
+popping terminal RPAREN
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>', 'SEMICOLON']. Token to read: LexToken(SEMICOLON,';',15,159)
+popping terminal SEMICOLON
+---------------------------------------------------------------
+currentStack['$', 'end', '<rept-funcBody2>']. Token to read: LexToken(end,'end',16,163)
+found rule to use: <rept-funcBody2> ->  EPSILON 
+popping <rept-funcBody2>adding ['EPSILON'] to stack
+---------------------------------------------------------------
+currentStack['$', 'end', 'EPSILON']. Token to read: LexToken(end,'end',16,163)
+popping terminal EPSILON
+---------------------------------------------------------------
+currentStack['$', 'end']. Token to read: LexToken(end,'end',16,163)
+popping terminal end

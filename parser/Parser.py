@@ -140,7 +140,7 @@ class Parser:
                     a = self.skipError(a,stack)
                     error = True
         
-        if error == True:
+        if error == True or stack[-1] != '$':
             return False 
         else : 
             file.write("\n\nParsing successful!")
@@ -168,17 +168,14 @@ class Parser:
                 while (rtrnTok.type not in first[top] or 'EPSILON' in first[top] and rtrnTok.type not in follow[top]) and rtrnTok.type != "$":
                     rtrnTok = self.nextToken()
                     
-                    print('finding sync token. Possibilities' +  str(first[top]) + " ")
-                    if('EPSILON' in first[top]):
-                        print(str(follow[top]))
-                    
-                    
+                    print('finding sync token. Possibilities' +  str(first[top]) +  str(follow[top]) if 'EPSILON' in first[top] else '' )
+                                    
                     print('current token = ' + str(rtrnTok))
-                print('found token that matches Non Terminal ' + str(rtrnTok) +  ('Follow' if rtrnTok.type in follow[top] else 'First') )
+                print('found ' +  ('Follow' if rtrnTok.type in follow[top] else 'First')  + ' token that matches Non Terminal: '+ top + '. Token is: ' + str(rtrnTok) )
         else : 
             
             while rtrnTok.type != top and rtrnTok.type != '$':
-                print('finding sync token: ' + top)
+                print('finding sync token... Possibilities: ' + top)
                 print('current token = ' + str(rtrnTok))
                 rtrnTok =  self.nextToken()
                 #print('skipping token' + str(lookAhead))

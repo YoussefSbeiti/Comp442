@@ -1,1 +1,1 @@
-Syntax error for token LexToken(DOT,'.',8,166)
+Syntax error for token LexToken(notEQ,'<>',9,89)

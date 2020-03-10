@@ -1,0 +1,24 @@
+
+// ====== main ====== //
+main
+  local
+    linear f1;
+    quadratic f2;
+    integer counter;
+  do
+    if(n<=0)
+    then
+      do
+      f1 = f1.build(2, 3.5);
+      f2 = f2.build(-2.0, 1.0, 0.0);
+      counter = 1;
+      end
+    else 
+      ;
+    while(counter <= 10)
+      do
+        write(counter);
+        write(f1.evaluate(counter));
+        write(f2.evaluate(counter));
+      end;
+  end

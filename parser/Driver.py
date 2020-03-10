@@ -2,7 +2,7 @@ from Grammar import *
 from Parser import *
 
 grammar = Grammar('../outfile.grm' , '../outfile.grm.first' , '../outfile.grm.follow')
-parser = Parser(grammar , '../polynomial.src')
+parser = Parser(grammar , '../testCases/multRelexpr.src')
 
 #grammar.printFollowSets()
 #parser._lex('../lexpositivegrading.outlextokens')
