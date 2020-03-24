@@ -1,67 +1,188 @@
 <START>        ::= <prog>
-<prog>         ::= {{<classDecl>}} {{<funcDef>}} 'main' <funcBody>
-<classDecl>    ::= 'class' 'id' [['inherits' 'id' {{'COMMA' 'id'}}]] 'LCB' {{<visibility> <memberDecl>}} 'RCB' 'SEMICOLON'
-<visibility>   ::= 'public' | 'private'
+<prog>         ::=  <semMarkerClassList> {{<classDecl>}} <semActionClassList> <semMarkerFuncDefList> {{<funcDef>}} <semActionFuncDefList>  'main' <funcBody> 
+
+<semMarkerMainBlock> ::= EPSILON
+<semActionMainBlock> ::= EPSILON
  
-<memberDecl> ::= 'id' <memberDeclLF> | 'integer' 'id' {{<arraySize>}} 'SEMICOLON' | 'float' 'id' {{<arraySize>}} 'SEMICOLON'
+<semActionProg> ::= EPSILON
+<semMarkerProg> ::= EPSILON
 
-<memberDeclLF> ::=  'LPAREN' <fParams> 'RPAREN' 'COLON' <funcDeclLF>  |  'id' {{<arraySize>}} 'SEMICOLON'
+<semActionFuncDefList> ::= EPSILON
+<semMarkerFuncDefList> ::= EPSILON
 
-<funcDecl>     ::= 'id' 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcDeclLF> 
+<semActionClassList> ::= EPSILON
+<semMarkerClassList> ::= EPSILON
+
+<classDecl>    ::= <semMarkerClassDecl> 'class' 'id' [[ <semMarkerInheritanceList> 'inherits' 'id' {{'COMMA' 'id'}} <semActionInheritanceList>]]  'LCB' <memberList> 'RCB' 'SEMICOLON' <semActionClassDecl>
+<visibility>   ::= 'public' | 'private'
+
+<semMarkerInheritanceList> ::= EPSILON
+<semActionInheritanceList> ::= EPSILON
+
+<semActionClassDecl> ::= EPSILON
+<semMarkerClassDecl> ::= EPSILON
+
+<memberList> ::= <semMarkerMemberList> {{<memberDecl>}} <semActionMemberList>
+
+<semActionMemberList> ::= EPSILON
+<semMarkerMemberList> ::= EPSILON
+
+<memberDecl> ::= <semMarkerMemberDecl> <visibility> <memberDecl2> <semActionMemberDecl>
+
+<semActionMemberDecl> ::= EPSILON
+<semMarkerMemberDecl>::= EPSILON
+
+<memberDecl2> ::= 'id' <memberDecl3> | 'integer' 'id' <semMarkerArrSizeList> {{<arraySize>}} <semActionArrSizeList> 'SEMICOLON' | 'float' 'id' <semMarkerArrSizeList> {{<arraySize>}} <semActionArrSizeList> 'SEMICOLON'
+
+<memberDecl3> ::=  'LPAREN' <semMarkerfParams> <fParams> <semActionfParams> 'RPAREN'  'COLON' <funcDeclLF>  |  'id' <semMarkerArrSizeList> {{<arraySize>}} <semActionArrSizeList> 'SEMICOLON'
+
+<funcDecl>     ::= 'id' 'LPAREN'<semMarkerfParams> <fParams> <semActionfParams> 'RPAREN' 'COLON' <funcDeclLF> 
 <funcDeclLF> ::= <type> 'SEMICOLON' |  'void' 'SEMICOLON'  
 
-<funcHead>     ::= <funcHead0> 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcHeadLF> 
-<funcHeadLF> ::= <type>  | 'void' 
-<funcHead0> ::=  'id' <funcHead0LF>
-<funcHead0LF> ::= 'DOUBLECOLON' 'id' | EPSILON
+<funcHead>     ::= 'id' <scope> 'LPAREN' <semMarkerfParams> <fParams> <semActionfParams> 'RPAREN' 'COLON' <returnType> 
+<returnType> ::= <type>  | 'void' 
+<scope> ::= 'DOUBLECOLON' 'id' | EPSILON
 
-<funcDef>      ::= <funcHead> <funcBody> 
-<funcBody>     ::= [[ 'local' {{<varDecl>}} ]] 'do' {{<statement>}} 'end'
-<varDecl>      ::= <type> 'id' {{<arraySize>}} 'SEMICOLON'
+<funcDef>      ::= <semMarkerFuncDef> <funcHead> <funcBody> <semActionFuncDef>
+<funcBody>     ::= <semMarkerFuncBody> [[ 'local' <semMarkerLocalVarList> {{<varDecl>}} <semActionLocalVarList>]] 'do' <semMarkerStatBlock> {{<statement>}} <semActionStatBlock>   <semActionFuncBody> 'end'
 
-<statement>    ::= <idnestid>  <statementLF>
-              | 'if'     'LPAREN' <relExpr> 'RPAREN' 'then' <statBlock> 'else' <statBlock> 'SEMICOLON'
-              | 'while'  'LPAREN' <relExpr> 'RPAREN' <statBlock> 'SEMICOLON'
-              | 'read'   'LPAREN' <variable> 'RPAREN' 'SEMICOLON'
-              | 'write'  'LPAREN' <expr> 'RPAREN' 'SEMICOLON'
-              | 'return' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON'
+<semActionFuncBody> ::= EPSILON
+<semMarkerFuncBody> ::=EPSILON
 
- <statementLF> ::= <assignOp> <expr> 'SEMICOLON' |  'SEMICOLON'             
+<varDecl>      ::= <semMarkerVarDecl> <type> 'id' <semMarkerArrSizeList> {{<arraySize>}} <semActionArrSizeList> 'SEMICOLON' <semActionVarDecl>
 
-<assignStat>   ::= <variable> <assignOp> <expr>
+<semMarkerStatBlock> ::=  EPSILON
+<semActionStatBlock> ::= EPSILON
+
+<semMarkerVarDecl> ::= EPSILON
+<semActionVarDecl> ::= EPSILON
+
+<semMarkerLocalVarList> ::= EPSILON
+<semActionLocalVarList> ::= EPSILON
+
+<semActionFuncDef> ::= EPSILON
+<semMarkerFuncDef> ::= EPSILON
+
+<statement>    ::= <semMarkerAssign>  <idnestid>  <statementLF> <semActionAssign> 
+              |  <semMarkerIf>  'if'     'LPAREN' <relExpr> 'RPAREN' 'then' <semMarkerThenBlock> <statBlock> <semActionThenBlock> 'else' <semMarkerElseBlock>  <statBlock>  <semActionElseBlock> 'SEMICOLON' <semActionIf>
+              |  <semMarkerWhile> 'while'  'LPAREN' <relExpr> 'RPAREN'<semMarkerStatBlock>  <statBlock> 'SEMICOLON' <semActionStatBlock> <semActionWhile>
+              |  <semMarkerRead> 'read'   'LPAREN' <variable> 'RPAREN' 'SEMICOLON' <semActionRead>
+              |  <semMarkerWrite> 'write'  'LPAREN' <expr> 'RPAREN' 'SEMICOLON' <semActionWrite>
+              |  <semMarkerReturn> 'return' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON' <semActionReturn>
+
+<semActionAssign> ::= EPSILON
+<semMarkerAssign> ::= EPSILON
+
+<semActionRead> ::= EPSILON
+<semMarkerRead> ::= EPSILON
+
+
+<semActionWrite> ::= EPSILON
+<semMarkerWrite> ::= EPSILON
+
+<semMarkerIf> ::EPSILON
+<semActionIf> ::EPSILON
+
+<semActionWhile> ::= EPSILON
+<semMarkerWhile> ::= EPSILON
+
+<semActionReturn> ::= EPSILON
+<semMarkerReturn>  ::= EPSILON
+
+<semMarkerThenBlock> ::= EPSILON
+<semActionThenBlock> ::= EPSILON
+
+<semMarkerElseBlock> ::= EPSILON
+<semActionElseBlock> ::= EPSILON
+
+         
+<statementLF> ::= <assignOp> <expr> 'SEMICOLON' |  'SEMICOLON'             
+
+<assignStat>   ::=  <variable>  <assignOp> <expr> 
 <statBlock>    ::= 'do' {{<statement>}} 'end' | <statement> | EPSILON  
-<expr>         ::= <arithExpr> <exprLF>
+<expr>         ::=  <arithExpr> <exprLF> 
 <exprLF> ::= <relOp> <arithExpr> | EPSILON
-<relExpr>      ::= <arithExpr> <relOp> <arithExpr>
-<arithExpr>    ::= <arithExpr> <addOp> <term> | <term> 
+
+<semMarkerExpression> ::= EPSILON
+<semActionExpression> ::= EPSILON
+
+<relExpr>      ::= <semMarkerRelExpr> <arithExpr> <relOp> <arithExpr> <semActionRelExpr>
+
+<semMarkerRelExpr> ::=EPSILON
+<semActionRelExpr> ::= EPSILON
+
+<arithExpr> ::= <semMarkerArithExpr> <term> <rightrec-arithExpr> <semActionArithExpr>
+<rightrec-arithExpr> ::= EPSILON
+<rightrec-arithExpr> ::=  <addOp> <term> <semActionArithExpr> <semMarkerArithExpr> <rightrec-arithExpr>
+
+<semMarkerArithExpr> ::= EPSILON
+<semActionArithExpr> ::= EPSILON
+
 <sign>         ::= 'PLUS' | 'MINUS'
-<term>         ::= <term> <multOp> <factor> | <factor>
+<term>         ::= <semMarkerTerm> <factor> <rightrec-term> <semActionTerm>
+
+<rightrec-term> ::= EPSILON 
+<rightrec-term> ::= <multOp> <factor> <semActionTerm> <semMarkerTerm> <rightrec-term>
+
+<semMarkerTerm> ::=EPSILON
+<semActionTerm> ::=EPSILON
+
 <factor>       ::= <idnestid> 
               | 'intNum' | 'floatNum'
               | 'LPAREN' <arithExpr> 'RPAREN'
-              | 'not' <factor>
-              | <sign> <factor>
+              | <semMarkerNot> 'not' <factor> <semActionNot>
+              | <semMarkerSignedNum> <sign> <factor> <semActionSignedNum>
 
-<idnestid> ::=  'id' [[<idnestLFLF>]] <idnestLF>
+<semMarkerSignedNum> ::= EPSILON
+<semActionSignedNum> ::= EPSILON
+
+<semMarkerNot> ::= EPSILON
+<semActionNot> ::= EPSILON
 
 
 <variable>     ::= <idnestid> 
-<functionCall> ::= <idnestid> 
 
-<idnestLF> ::=     {{ 'DOT' 'id' [[<idnestLFLF>]] }}  
-<idnestLFLF> ::= <indice>{{<indice>}} |   'LPAREN' <aParams> 'RPAREN' 
+<idnestid> ::=  <semMarkerVariable> <semMarkerVarMember> 'id' [[<idnestLFLF>]] <semActionVarMember> <idnestLF> <semActionVariable>
+<semActionVariable> ::=EPSILON
+<semMarkerVariable> ::= EPSILON
+
+
+<idnestLF> ::=     {{ 'DOT' <semMarkerVarMember>'id' [[<idnestLFLF>]] <semActionVarMember> }}
+<semMarkerVarMember>::=EPSILON
+<semActionVarMember>::=EPSILON  
+
+<idnestLFLF> ::= <semMarkerIndexList> <indice>{{<indice>}} <semActionIndexList> |  <semMarkerFuncCall> 'LPAREN' <semMarkeraParams> <aParams> <semActionaParams> 'RPAREN' <semActionFuncCall>
+<semActionFuncCall> ::=EPSILON
+<semMarkerFuncCall> ::=  EPSILON
+
+<semMarkerIndexList> ::= EPSILON
+<semActionIndexList>::= EPSILON
 
 <indice>       ::= 'LSB' <arithExpr> 'RSB'
 
 <arraySize>    ::= 'LSB' <arraySizeInt> 'RSB' 
 <arraySizeInt> ::= 'intNum' | EPSILON
 
+
+<semMarkerArrSizeList> ::= EPSILON
+<semActionArrSizeList> ::= EPSILON
+
+
 <type>         ::= 'integer' | 'float' | 'id'
 
-<fParams>      ::= <type> 'id' {{<arraySize>}} {{<fParamsTail>}} | EPSILON  
-<aParams>      ::= <expr> {{<aParamsTail>}} | EPSILON 
-<fParamsTail>  ::= 'COMMA' <type> 'id' {{<arraySize>}}
-<aParamsTail>  ::= 'COMMA' <expr>
+<fParams>      ::= <semMarkerParam> <type> 'id' <semMarkerArrSizeList> {{<arraySize>}} <semActionArrSizeList> <semActionParam> {{<fParamsTail>}}  |  EPSILON  
+<fParamsTail>  ::= 'COMMA' <semMarkerParam> <type> 'id'  <semMarkerArrSizeList> {{<arraySize>}} <semActionArrSizeList> <semActionParam>
+<semMarkerfParams> ::= EPSILON
+<semActionfParams> ::= EPSILON
+
+<semMarkerParam> ::=EPSILON
+<semActionParam> ::= EPSILON
+
+<aParams>      ::= <semMarkerParam> <expr> {{<aParamsTail>}} <semActionParam> |  EPSILON 
+<aParamsTail>  ::= 'COMMA' <semMarkerParam> <expr> <semActionParam>
+<semActionaParams> ::= EPSILON
+<semMarkeraParams> ::= EPSILON
+
 <assignOp>     ::= 'ASSIGN'
 <relOp>        ::= 'EQUAL' | 'notEQ' | 'LT' | 'GT' | 'LEQ' | 'GEQ' 
 <addOp>        ::= 'PLUS' | 'MINUS' | 'or' 

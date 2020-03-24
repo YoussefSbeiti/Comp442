@@ -1,15 +1,15 @@
 <START> ::= <prog> 
 
-<aParams> ::= <expr> <rept-aParams1> 
+<aParams> ::= <semMarkerParam> <expr> <rept-aParams2> <semActionParam> 
 <aParams> ::= EPSILON 
 
-<aParamsTail> ::= 'COMMA' <expr> 
+<aParamsTail> ::= 'COMMA' <semMarkerParam> <expr> <semActionParam> 
 
 <addOp> ::= 'PLUS' 
 <addOp> ::= 'MINUS' 
 <addOp> ::= 'or' 
 
-<arithExpr> ::= <term> <rightrec-arithExpr> 
+<arithExpr> ::= <semMarkerArithExpr> <term> <rightrec-arithExpr> <semActionArithExpr> 
 
 <arraySize> ::= 'LSB' <arraySizeInt> 'RSB' 
 
@@ -20,81 +20,75 @@
 
 <assignStat> ::= <variable> <assignOp> <expr> 
 
-<classDecl> ::= 'class' 'id' <opt-classDecl2> 'LCB' <rept-classDecl4> 'RCB' 'SEMICOLON' 
+<classDecl> ::= <semMarkerClassDecl> 'class' 'id' <opt-classDecl3> 'LCB' <memberList> 'RCB' 'SEMICOLON' <semActionClassDecl> 
 
 <expr> ::= <arithExpr> <exprLF> 
 
 <exprLF> ::= <relOp> <arithExpr> 
 <exprLF> ::= EPSILON 
 
-<fParams> ::= <type> 'id' <rept-fParams2> <rept-fParams3> 
+<fParams> ::= <semMarkerParam> <type> 'id' <semMarkerArrSizeList> <rept-fParams4> <semActionArrSizeList> <semActionParam> <rept-fParams7> 
 <fParams> ::= EPSILON 
 
-<fParamsTail> ::= 'COMMA' <type> 'id' <rept-fParamsTail3> 
+<fParamsTail> ::= 'COMMA' <semMarkerParam> <type> 'id' <semMarkerArrSizeList> <rept-fParamsTail5> <semActionArrSizeList> <semActionParam> 
 
 <factor> ::= <idnestid> 
 <factor> ::= 'intNum' 
 <factor> ::= 'floatNum' 
 <factor> ::= 'LPAREN' <arithExpr> 'RPAREN' 
-<factor> ::= 'not' <factor> 
-<factor> ::= <sign> <factor> 
+<factor> ::= <semMarkerNot> 'not' <factor> <semActionNot> 
+<factor> ::= <semMarkerSignedNum> <sign> <factor> <semActionSignedNum> 
 
-<funcBody> ::= <opt-funcBody0> 'do' <rept-funcBody2> 'end' 
+<funcBody> ::= <semMarkerFuncBody> <opt-funcBody1> 'do' <semMarkerStatBlock> <rept-funcBody4> <semActionStatBlock> <semActionFuncBody> 'end' 
 
-<funcDecl> ::= 'id' 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcDeclLF> 
+<funcDecl> ::= 'id' 'LPAREN' <semMarkerfParams> <fParams> <semActionfParams> 'RPAREN' 'COLON' <funcDeclLF> 
 
 <funcDeclLF> ::= <type> 'SEMICOLON' 
 <funcDeclLF> ::= 'void' 'SEMICOLON' 
 
-<funcDef> ::= <funcHead> <funcBody> 
+<funcDef> ::= <semMarkerFuncDef> <funcHead> <funcBody> <semActionFuncDef> 
 
-<funcHead0> ::= 'id' <funcHead0LF> 
-
-<funcHead0LF> ::= 'DOUBLECOLON' 'id' 
-<funcHead0LF> ::= EPSILON 
-
-<funcHead> ::= <funcHead0> 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcHeadLF> 
-
-<funcHeadLF> ::= <type> 
-<funcHeadLF> ::= 'void' 
-
-<functionCall> ::= <idnestid> 
+<funcHead> ::= 'id' <scope> 'LPAREN' <semMarkerfParams> <fParams> <semActionfParams> 'RPAREN' 'COLON' <returnType> 
 
 <idnestLF> ::= <rept-idnestLF0> 
 
-<idnestLFLF> ::= <indice> <rept-idnestLFLF1> 
-<idnestLFLF> ::= 'LPAREN' <aParams> 'RPAREN' 
+<idnestLFLF> ::= <semMarkerIndexList> <indice> <rept-idnestLFLF2> <semActionIndexList> 
+<idnestLFLF> ::= <semMarkerFuncCall> 'LPAREN' <semMarkeraParams> <aParams> <semActionaParams> 'RPAREN' <semActionFuncCall> 
 
-<idnestid> ::= 'id' <opt-idnestid1> <idnestLF> 
+<idnestid> ::= <semMarkerVariable> <semMarkerVarMember> 'id' <opt-idnestid3> <semActionVarMember> <idnestLF> <semActionVariable> 
 
 <indice> ::= 'LSB' <arithExpr> 'RSB' 
 
-<memberDecl> ::= 'id' <memberDeclLF> 
-<memberDecl> ::= 'integer' 'id' <rept-memberDecl2> 'SEMICOLON' 
-<memberDecl> ::= 'float' 'id' <rept-memberDecl2> 'SEMICOLON' 
+<memberDecl2> ::= 'id' <memberDecl3> 
+<memberDecl2> ::= 'integer' 'id' <semMarkerArrSizeList> <rept-memberDecl23> <semActionArrSizeList> 'SEMICOLON' 
+<memberDecl2> ::= 'float' 'id' <semMarkerArrSizeList> <rept-memberDecl23> <semActionArrSizeList> 'SEMICOLON' 
 
-<memberDeclLF> ::= 'LPAREN' <fParams> 'RPAREN' 'COLON' <funcDeclLF> 
-<memberDeclLF> ::= 'id' <rept-memberDeclLF1> 'SEMICOLON' 
+<memberDecl3> ::= 'LPAREN' <semMarkerfParams> <fParams> <semActionfParams> 'RPAREN' 'COLON' <funcDeclLF> 
+<memberDecl3> ::= 'id' <semMarkerArrSizeList> <rept-memberDecl32> <semActionArrSizeList> 'SEMICOLON' 
+
+<memberDecl> ::= <semMarkerMemberDecl> <visibility> <memberDecl2> <semActionMemberDecl> 
+
+<memberList> ::= <semMarkerMemberList> <rept-memberList1> <semActionMemberList> 
 
 <multOp> ::= 'TIMES' 
 <multOp> ::= 'DIVIDE' 
 <multOp> ::= 'and' 
 
-<opt-classDecl2> ::= 'inherits' 'id' <rept-opt-classDecl22> 
-<opt-classDecl2> ::= EPSILON 
+<opt-classDecl3> ::= <semMarkerInheritanceList> 'inherits' 'id' <rept-opt-classDecl33> <semActionInheritanceList> 
+<opt-classDecl3> ::= EPSILON 
 
-<opt-funcBody0> ::= 'local' <rept-opt-funcBody01> 
-<opt-funcBody0> ::= EPSILON 
+<opt-funcBody1> ::= 'local' <semMarkerLocalVarList> <rept-opt-funcBody12> <semActionLocalVarList> 
+<opt-funcBody1> ::= EPSILON 
 
-<opt-idnestLF3> ::= <idnestLFLF> 
-<opt-idnestLF3> ::= EPSILON 
+<opt-idnestLF4> ::= <idnestLFLF> 
+<opt-idnestLF4> ::= EPSILON 
 
-<opt-idnestid1> ::= <idnestLFLF> 
-<opt-idnestid1> ::= EPSILON 
+<opt-idnestid3> ::= <idnestLFLF> 
+<opt-idnestid3> ::= EPSILON 
 
-<prog> ::= <rept-prog0> <rept-prog1> 'main' <funcBody> 
+<prog> ::= <semMarkerClassList> <rept-prog1> <semActionClassList> <semMarkerFuncDefList> <rept-prog4> <semActionFuncDefList> 'main' <funcBody> 
 
-<relExpr> ::= <arithExpr> <relOp> <arithExpr> 
+<relExpr> ::= <semMarkerRelExpr> <arithExpr> <relOp> <arithExpr> <semActionRelExpr> 
 
 <relOp> ::= 'EQUAL' 
 <relOp> ::= 'notEQ' 
@@ -103,59 +97,205 @@
 <relOp> ::= 'LEQ' 
 <relOp> ::= 'GEQ' 
 
-<rept-aParams1> ::= <aParamsTail> <rept-aParams1> 
-<rept-aParams1> ::= EPSILON 
+<rept-aParams2> ::= <aParamsTail> <rept-aParams2> 
+<rept-aParams2> ::= EPSILON 
 
-<rept-classDecl4> ::= <visibility> <memberDecl> <rept-classDecl4> 
-<rept-classDecl4> ::= EPSILON 
+<rept-fParams4> ::= <arraySize> <rept-fParams4> 
+<rept-fParams4> ::= EPSILON 
 
-<rept-fParams2> ::= <arraySize> <rept-fParams2> 
-<rept-fParams2> ::= EPSILON 
+<rept-fParams7> ::= <fParamsTail> <rept-fParams7> 
+<rept-fParams7> ::= EPSILON 
 
-<rept-fParams3> ::= <fParamsTail> <rept-fParams3> 
-<rept-fParams3> ::= EPSILON 
+<rept-fParamsTail5> ::= <arraySize> <rept-fParamsTail5> 
+<rept-fParamsTail5> ::= EPSILON 
 
-<rept-fParamsTail3> ::= <arraySize> <rept-fParamsTail3> 
-<rept-fParamsTail3> ::= EPSILON 
+<rept-funcBody4> ::= <statement> <rept-funcBody4> 
+<rept-funcBody4> ::= EPSILON 
 
-<rept-funcBody2> ::= <statement> <rept-funcBody2> 
-<rept-funcBody2> ::= EPSILON 
-
-<rept-idnestLF0> ::= 'DOT' 'id' <opt-idnestLF3> <rept-idnestLF0> 
+<rept-idnestLF0> ::= 'DOT' <semMarkerVarMember> 'id' <opt-idnestLF4> <semActionVarMember> <rept-idnestLF0> 
 <rept-idnestLF0> ::= EPSILON 
 
-<rept-idnestLFLF1> ::= <indice> <rept-idnestLFLF1> 
-<rept-idnestLFLF1> ::= EPSILON 
+<rept-idnestLFLF2> ::= <indice> <rept-idnestLFLF2> 
+<rept-idnestLFLF2> ::= EPSILON 
 
-<rept-memberDecl2> ::= <arraySize> <rept-memberDecl2> 
-<rept-memberDecl2> ::= EPSILON 
+<rept-memberDecl23> ::= <arraySize> <rept-memberDecl23> 
+<rept-memberDecl23> ::= EPSILON 
 
-<rept-memberDeclLF1> ::= <arraySize> <rept-memberDeclLF1> 
-<rept-memberDeclLF1> ::= EPSILON 
+<rept-memberDecl32> ::= <arraySize> <rept-memberDecl32> 
+<rept-memberDecl32> ::= EPSILON 
 
-<rept-opt-classDecl22> ::= 'COMMA' 'id' <rept-opt-classDecl22> 
-<rept-opt-classDecl22> ::= EPSILON 
+<rept-memberList1> ::= <memberDecl> <rept-memberList1> 
+<rept-memberList1> ::= EPSILON 
 
-<rept-opt-funcBody01> ::= <varDecl> <rept-opt-funcBody01> 
-<rept-opt-funcBody01> ::= EPSILON 
+<rept-opt-classDecl33> ::= 'COMMA' 'id' <rept-opt-classDecl33> 
+<rept-opt-classDecl33> ::= EPSILON 
 
-<rept-prog0> ::= <classDecl> <rept-prog0> 
-<rept-prog0> ::= EPSILON 
+<rept-opt-funcBody12> ::= <varDecl> <rept-opt-funcBody12> 
+<rept-opt-funcBody12> ::= EPSILON 
 
-<rept-prog1> ::= <funcDef> <rept-prog1> 
+<rept-prog1> ::= <classDecl> <rept-prog1> 
 <rept-prog1> ::= EPSILON 
+
+<rept-prog4> ::= <funcDef> <rept-prog4> 
+<rept-prog4> ::= EPSILON 
 
 <rept-statBlock1> ::= <statement> <rept-statBlock1> 
 <rept-statBlock1> ::= EPSILON 
 
-<rept-varDecl2> ::= <arraySize> <rept-varDecl2> 
-<rept-varDecl2> ::= EPSILON 
+<rept-varDecl4> ::= <arraySize> <rept-varDecl4> 
+<rept-varDecl4> ::= EPSILON 
+
+<returnType> ::= <type> 
+<returnType> ::= 'void' 
 
 <rightrec-arithExpr> ::= EPSILON 
-<rightrec-arithExpr> ::= <addOp> <term> <rightrec-arithExpr> 
+<rightrec-arithExpr> ::= <addOp> <term> <semActionArithExpr> <semMarkerArithExpr> <rightrec-arithExpr> 
 
 <rightrec-term> ::= EPSILON 
-<rightrec-term> ::= <multOp> <factor> <rightrec-term> 
+<rightrec-term> ::= <multOp> <factor> <semActionTerm> <semMarkerTerm> <rightrec-term> 
+
+<scope> ::= 'DOUBLECOLON' 'id' 
+<scope> ::= EPSILON 
+
+<semActionArithExpr> ::= EPSILON 
+
+<semActionArrSizeList> ::= EPSILON 
+
+<semActionAssign> ::= EPSILON 
+
+<semActionClassDecl> ::= EPSILON 
+
+<semActionClassList> ::= EPSILON 
+
+<semActionElseBlock> ::= EPSILON 
+
+<semActionExpression> ::= EPSILON 
+
+<semActionFuncBody> ::= EPSILON 
+
+<semActionFuncCall> ::= EPSILON 
+
+<semActionFuncDef> ::= EPSILON 
+
+<semActionFuncDefList> ::= EPSILON 
+
+<semActionIf> ::= EPSILON 
+
+<semActionIndexList> ::= EPSILON 
+
+<semActionInheritanceList> ::= EPSILON 
+
+<semActionLocalVarList> ::= EPSILON 
+
+<semActionMainBlock> ::= EPSILON 
+
+<semActionMemberDecl> ::= EPSILON 
+
+<semActionMemberList> ::= EPSILON 
+
+<semActionNot> ::= EPSILON 
+
+<semActionParam> ::= EPSILON 
+
+<semActionProg> ::= EPSILON 
+
+<semActionRead> ::= EPSILON 
+
+<semActionRelExpr> ::= EPSILON 
+
+<semActionReturn> ::= EPSILON 
+
+<semActionSignedNum> ::= EPSILON 
+
+<semActionStatBlock> ::= EPSILON 
+
+<semActionTerm> ::= EPSILON 
+
+<semActionThenBlock> ::= EPSILON 
+
+<semActionVarDecl> ::= EPSILON 
+
+<semActionVarMember> ::= EPSILON 
+
+<semActionVariable> ::= EPSILON 
+
+<semActionWhile> ::= EPSILON 
+
+<semActionWrite> ::= EPSILON 
+
+<semActionaParams> ::= EPSILON 
+
+<semActionfParams> ::= EPSILON 
+
+<semMarkerArithExpr> ::= EPSILON 
+
+<semMarkerArrSizeList> ::= EPSILON 
+
+<semMarkerAssign> ::= EPSILON 
+
+<semMarkerClassDecl> ::= EPSILON 
+
+<semMarkerClassList> ::= EPSILON 
+
+<semMarkerElseBlock> ::= EPSILON 
+
+<semMarkerExpression> ::= EPSILON 
+
+<semMarkerFuncBody> ::= EPSILON 
+
+<semMarkerFuncCall> ::= EPSILON 
+
+<semMarkerFuncDef> ::= EPSILON 
+
+<semMarkerFuncDefList> ::= EPSILON 
+
+<semMarkerIf> ::= EPSILON 
+
+<semMarkerIndexList> ::= EPSILON 
+
+<semMarkerInheritanceList> ::= EPSILON 
+
+<semMarkerLocalVarList> ::= EPSILON 
+
+<semMarkerMainBlock> ::= EPSILON 
+
+<semMarkerMemberDecl> ::= EPSILON 
+
+<semMarkerMemberList> ::= EPSILON 
+
+<semMarkerNot> ::= EPSILON 
+
+<semMarkerParam> ::= EPSILON 
+
+<semMarkerProg> ::= EPSILON 
+
+<semMarkerRead> ::= EPSILON 
+
+<semMarkerRelExpr> ::= EPSILON 
+
+<semMarkerReturn> ::= EPSILON 
+
+<semMarkerSignedNum> ::= EPSILON 
+
+<semMarkerStatBlock> ::= EPSILON 
+
+<semMarkerTerm> ::= EPSILON 
+
+<semMarkerThenBlock> ::= EPSILON 
+
+<semMarkerVarDecl> ::= EPSILON 
+
+<semMarkerVarMember> ::= EPSILON 
+
+<semMarkerVariable> ::= EPSILON 
+
+<semMarkerWhile> ::= EPSILON 
+
+<semMarkerWrite> ::= EPSILON 
+
+<semMarkeraParams> ::= EPSILON 
+
+<semMarkerfParams> ::= EPSILON 
 
 <sign> ::= 'PLUS' 
 <sign> ::= 'MINUS' 
@@ -164,23 +304,23 @@
 <statBlock> ::= <statement> 
 <statBlock> ::= EPSILON 
 
-<statement> ::= <idnestid> <statementLF> 
-<statement> ::= 'if' 'LPAREN' <relExpr> 'RPAREN' 'then' <statBlock> 'else' <statBlock> 'SEMICOLON' 
-<statement> ::= 'while' 'LPAREN' <relExpr> 'RPAREN' <statBlock> 'SEMICOLON' 
-<statement> ::= 'read' 'LPAREN' <variable> 'RPAREN' 'SEMICOLON' 
-<statement> ::= 'write' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON' 
-<statement> ::= 'return' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON' 
+<statement> ::= <semMarkerAssign> <idnestid> <statementLF> <semActionAssign> 
+<statement> ::= <semMarkerIf> 'if' 'LPAREN' <relExpr> 'RPAREN' 'then' <semMarkerThenBlock> <statBlock> <semActionThenBlock> 'else' <semMarkerElseBlock> <statBlock> <semActionElseBlock> 'SEMICOLON' <semActionIf> 
+<statement> ::= <semMarkerWhile> 'while' 'LPAREN' <relExpr> 'RPAREN' <semMarkerStatBlock> <statBlock> 'SEMICOLON' <semActionStatBlock> <semActionWhile> 
+<statement> ::= <semMarkerRead> 'read' 'LPAREN' <variable> 'RPAREN' 'SEMICOLON' <semActionRead> 
+<statement> ::= <semMarkerWrite> 'write' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON' <semActionWrite> 
+<statement> ::= <semMarkerReturn> 'return' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON' <semActionReturn> 
 
 <statementLF> ::= <assignOp> <expr> 'SEMICOLON' 
 <statementLF> ::= 'SEMICOLON' 
 
-<term> ::= <factor> <rightrec-term> 
+<term> ::= <semMarkerTerm> <factor> <rightrec-term> <semActionTerm> 
 
 <type> ::= 'integer' 
 <type> ::= 'float' 
 <type> ::= 'id' 
 
-<varDecl> ::= <type> 'id' <rept-varDecl2> 'SEMICOLON' 
+<varDecl> ::= <semMarkerVarDecl> <type> 'id' <semMarkerArrSizeList> <rept-varDecl4> <semActionArrSizeList> 'SEMICOLON' <semActionVarDecl> 
 
 <variable> ::= <idnestid> 
 

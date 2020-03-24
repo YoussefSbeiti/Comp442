@@ -95,19 +95,37 @@ class Grammar:
         for rule in self.rules:
             print(rule)
     
+    #
+    #   TO FIX
+    #
     def getFirstFromRHS(self,rhs):
         elements = rhs.split()
         rslt = []
-        for element in elements:
-            if element in self.terminals or element == 'EPSILON':
-                rslt.append(element)
-                break
-            else:
-                rslt.extend(self.firstSets[element])
-                if 'EPSILON' not in self.firstSets[element]:
-                    break
 
-        return list(set(rslt))
+        if  elements == ['EPSILON']:
+                return ['EPSILON']
+
+        for element in elements:
+            if element in self.terminals :
+                rslt.append(element)
+                while 'EPSILON' in rslt:
+                    rslt.remove('EPSILON')
+                break
+            
+            else:
+                if element != 'EPSILON':
+                    rslt.extend(self.firstSets[element])
+                    if 'EPSILON' not in self.firstSets[element]:
+                        while 'EPSILON' in rslt:
+                            rslt.remove('EPSILON')
+                        break
+        
+        
+
+        if rslt == []:
+            return ['EPSILON']
+        else:
+            return list(set(rslt))
             
 
 

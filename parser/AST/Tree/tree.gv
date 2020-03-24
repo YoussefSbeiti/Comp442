@@ -1,0 +1,7 @@
+digraph {
+	0 [label=root]
+	1 [label=child1]
+	0 -> 1
+	2 [label=child2]
+	0 -> 2
+}
