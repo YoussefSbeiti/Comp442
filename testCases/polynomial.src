@@ -1,15 +1,30 @@
-// ====== Class declarations ====== //
-class POLYNOMIAL {
+class POLYNOMIAL {                                      
 	public evaluate(float x) : float;
-  public int arr[2][3];
+	public undefined() : void;                                          
+  public integer a;
+	public float a;                                                    
 };
+
+class A{};
+                                                            
 
 class LINEAR inherits POLYNOMIAL {
 	private float a;
 	private float b;
+	private UNDECLARED undeclared;                                      
 	
 	public build(float A, float B) : LINEAR;
 	public evaluate(float x) : float;
+};
+
+class C {
+        private float a;
+	public f(integer a): integer; 
+};
+class D inherits C {
+        private float a;                                               
+        public f(integer x): integer;                                   
+        public f(float f): float;                                       
 };
 
 class QUADRATIC inherits POLYNOMIAL {
@@ -21,7 +36,16 @@ class QUADRATIC inherits POLYNOMIAL {
 	public evaluate(float x) : float;
 };
 
-// ====== Function Definitions ====== //
+
+LINEAR::f() : void                                                       
+  local
+    integer x;
+  do
+    x = 1;
+    undeclared = 0;                                                 
+    return (x);
+  end
+
 POLYNOMIAL::evaluate(float x) : float
   do
     return (0);
@@ -30,18 +54,20 @@ POLYNOMIAL::evaluate(float x) : float
 LINEAR::evaluate(float x) : float
   local
     float result;
+    integer result;                                                     
+    float x;                                                            
   do
     result = 0.0;
-    result = a.a[5].lll * x + b;
+    result = a * x + b;
     return (result);
   end
   
 QUADRATIC::evaluate(float x) : float
   local
     float result;
-  do    //Using Horner's method
+  do    
     result = a;
-    result = result * x * 3 + b;
+    result = result * x + b;
     result = result * x + c;
     return (result);
   end
@@ -52,6 +78,8 @@ LINEAR::build(float A, float B) : LINEAR
   do
     new_function.a = A;
     new_function.b = B;
+    new_function.undeclareddata = 1;                                    
+    new_function.undeclaredfunction();                                  
     return (new_function);
   end  
   
@@ -64,28 +92,38 @@ QUADRATIC::build(float A, float B, float C) : QUADRATIC
     new_function.c = C;
     return (new_function);
   end
-  
 
-// ====== main ====== //
+f(integer p_arr[][][]): integer
+  do
+    return (2.5 + 3.5 * 8.8);                                              
+  end
+
+f(float x): integer                                                      
+ do
+   return (1);
+ end
+ 
+
 main
   local
-    linear f1;
-    quadratic f2;
+    LINEAR f1;
+    QUADRATIC f2;
     integer counter;
+    integer arr[2][3];
   do
-    if(n<=0)
-    then
-      do
-      f1 = f1.build(2, 3.5);
-      f2 = f2.build(-2.0, 1.0, 0.0);
-      counter = 1;
-      end
-    else 
-      ;
+    f1 = f1.build(2, 3.5+2.3/4.2);                                       
+    f2 = f2.build(-2.0, 1.0, 0.0);                                        
+    f2 = f2.build(2,1,0);                                                
+    f3();                                                                
+    counter = 1;
+    counter = arr[1][1][1];                                              
+    counter = arr[2.5+3.2][1];                                              
+    counter = f(arr);                                                    
+    counter = 3.5 + 2.4 / 3.3;                                           
     while(counter <= 10)
       do
         write(counter);
         write(f1.evaluate(counter));
         write(f2.evaluate(counter));
       end;
-  end
+  end---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------

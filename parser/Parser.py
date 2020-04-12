@@ -1,10 +1,11 @@
-from Lexer.Lexer import Lexer
+from parser.Lexer.Lexer import Lexer
 import json
 from tabulate import tabulate
 import re
 from types import SimpleNamespace
-from AST.AST import AST
+from parser.AST.AST import AST
 from graphviz import Digraph
+from parser.Grammar.Grammar import Grammar
 
 class Parser:
     def __init__(self , grammar, srcPath):
@@ -12,7 +13,7 @@ class Parser:
         lexer = Lexer()
         lexer.build()
         self.lexer = lexer.lexer
-        self.lexer.lineno += 1
+        #self.lexer.lineno += 1
         
         self.table = {}
 
@@ -20,6 +21,7 @@ class Parser:
         self.semanticActions = {}
         
         self.astDot = Digraph()
+        self.astRoot = None
 
         file = open(srcPath , 'r')
         self.lexer.input(file.read())
@@ -29,7 +31,7 @@ class Parser:
         self.generateParseTable()
         self.printParseTableHTML()
         #delete contents of wrror file
-        open("errors.txt", "w").close()
+        open("parser/Artifacts/errors.txt", "w").close()
 
     def _lex(self, outfile):
         # Tokenize
@@ -112,7 +114,7 @@ class Parser:
             return strin
 
         #open outderivation file
-        file   = open( 'outDerivation.txt' , 'w+')    
+        file   = open( 'parser/Artifacts/outDerivation.txt' , 'w+')    
         
         #push the EOF token to the stack
         stack = ['$']
@@ -136,7 +138,7 @@ class Parser:
             x = stack[-1] 
 
             #create a AST object             
-            ast = AST([';' , '::' , '}' , '{' , 'main' , 'local' ,'class' , '(' , ')' , 'inherits' , ':' , ',' , 'do', 'end' , '.' , '[' , ']'])
+            ast = AST([ ';' ,  '}' , '{' , 'main' , 'local' ,'class' , '(' , ')' , 'inherits' , ':' , ',' , 'do', 'end' , '.' , '[' , ']' , 'return'])
 
             #show stack and next token
             file.write('---------------------------------------------------------------\n')
@@ -158,6 +160,7 @@ class Parser:
 
                         #make node and add it to semStack
                         node = ast.makeNodeTerminal(a.value)
+                        node.type = a.type
                         semStack.append(node)
                         #print('adding ' + str(node) + 'to semstack' )     
                         
@@ -194,7 +197,9 @@ class Parser:
                         semMarker = semMarker.group(1)
                         #print('found semMarker' + semMarker)
                         #print('current semStack = ' + getStackAsString(semStack))
-                        semStack.append(ast.makeNodeTerminal(semMarker))
+                        semMarkerNode = ast.makeNodeTerminal("Marker" + semMarker)
+                        semMarkerNode.line = self.lexer.lineno
+                        semStack.append( semMarkerNode)
 
 
                     file.write('found rule to use: ' + self.table[x][a.type]['LHS'] + " -> " + self.table[x][a.type]['RHS'] + '\n')
@@ -213,22 +218,29 @@ class Parser:
                     error = True
 
         
-        #create root node for ast (Prog node)
-        ast.makeNode('Prog' , semStack).treeDOT(self.astDot)    
-        
-        
         if error == True or stack[-1] != '$':
             return False 
         else : 
+            
             file.write("\n\nParsing successful!")
             file.close()
-            dotFile = open('tree.gv' ,'w+')
-            dotFile.write(self.astDot.source)
+
+
+            #create root node for ast (Prog node)
+            self.astRoot =  ast.makeNode('Prog' , semStack)    
+
+            self.astRoot.treeDOT(self.astDot)
+
+            #dotFile = open('tree.gv' ,'w+')
+            #dotFile.write(self.astDot.source)
+            
+            self.astDot.render('tree.gv' )
+
             return True 
 
 
     def skipError(self , lookAhead , stack):
-        file = open('errors.txt' , 'a+')
+        file = open('parser/Artifacts/errors.txt' , 'a+')
         file.write("Syntax error for token " + str(lookAhead) + "\n")
 
         top = stack[-1]

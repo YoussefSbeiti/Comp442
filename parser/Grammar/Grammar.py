@@ -1,7 +1,11 @@
-from rule import *
+from parser.Grammar.rule import *
 import ast
-from Lexer.Lexer import Lexer
+from parser.Lexer.Lexer import Lexer
 import json
+
+import os
+
+print(os.getcwd())
 
 def pretty(d):
    for key, value in d.items():

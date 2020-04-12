@@ -1,19 +1,34 @@
-class POLYNOMIAL inherits EQUATION , BITCH {
-	public evaluate(float x) : float;
-	public int a;
+class POLYNOMIAL{
+
+	public A a;
+  public bubbleSort(integer arr[], integer size) : void;
 };
 
-bubbleSort(integer arr[], integer size) : void
+class A{
+  public B b;
+};
+
+class B{
+  public integer c;
+  public func(integer d) : B;
+
+};
+
+
+printArray(integer arr[], integer size) : void
   local
     integer n;
-    integer i;
-    integer j;
-    integer temp; 
+    integer i; 
   do
-    a = 10 + 10;
+    n = size;
+    i = 0; 
+    while (i<n)
+      do
+        write(arr[i]);
+        i = i+1;
+      end;
   end 
 
 main
 	do
-  
 	end

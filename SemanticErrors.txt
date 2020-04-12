@@ -1,0 +1,8 @@
+Overloaded Function add [ line:7]
+shadowed member function evaluate of type: float:float,  [ line:11]
+shadowed data member shadowed [ line:18]
+shadowed member function evaluate of type: integer:float,  [ line:21]
+Cyclical dependencyError  [ line:25]
+Duplicate variable a [ line:29]
+Cyclical dependencyError  [ line:25]
+Duplicate class DUPE [ line:35]

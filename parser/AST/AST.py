@@ -1,4 +1,4 @@
-from AST.Tree.Node import Node
+from parser.AST.Node import Node
 
 class AST:
 
@@ -18,11 +18,13 @@ class AST:
         while i < x:
             element = semStack.pop()
             
-            if element.value == type: #means marker has been found. Nodes beyond this marker do not belong to this node
+            if element.value == "Marker"+type: #means marker has been found. Nodes beyond this marker do not belong to this node
+                node.line = element.line
                 break
 
             if not element.value in self.TokensToNeglect:
-                node.addChildFromTheLeft(element)
+                if not  (element.value in ["Assign" ] and element.children == []):
+                    node.addChildFromTheLeft(element)
 
             i += 1
         if(type == 'Prog'):

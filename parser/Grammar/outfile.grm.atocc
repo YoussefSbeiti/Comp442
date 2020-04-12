@@ -1,6 +1,6 @@
 START -> prog 
 
-aParams -> semMarkerParam expr rept-aParams2 semActionParam 
+aParams -> semMarkerParam expr semActionParam rept-aParams3 
 aParams -> EPSILON 
 
 aParamsTail -> 'COMMA' semMarkerParam expr semActionParam 
@@ -11,26 +11,29 @@ addOp -> 'or'
 
 arithExpr -> semMarkerArithExpr term rightrec-arithExpr semActionArithExpr 
 
-arraySize -> 'LSB' arraySizeInt 'RSB' 
+arraySize -> 'LSB' semMarkerArraySize arraySizeInt semActionArraySize 'RSB' 
 
 arraySizeInt -> 'intNum' 
 arraySizeInt -> EPSILON 
+
+arraySizeList -> semMarkerArrSizeList arraySize rept-arraySizeList2 semActionArrSizeList 
+arraySizeList -> EPSILON 
 
 assignOp -> 'ASSIGN' 
 
 assignStat -> variable assignOp expr 
 
-classDecl -> semMarkerClassDecl 'class' 'id' opt-classDecl3 'LCB' memberList 'RCB' 'SEMICOLON' semActionClassDecl 
+classDecl -> semMarkerClassDecl 'class' 'id' semMarkerInheritanceList opt-classDecl4 semActionInheritanceList 'LCB' memberList 'RCB' 'SEMICOLON' semActionClassDecl 
 
 expr -> arithExpr exprLF 
 
 exprLF -> relOp arithExpr 
 exprLF -> EPSILON 
 
-fParams -> semMarkerParam type 'id' semMarkerArrSizeList rept-fParams4 semActionArrSizeList semActionParam rept-fParams7 
+fParams -> semMarkerParam type 'id' arraySizeList semActionParam rept-fParams5 
 fParams -> EPSILON 
 
-fParamsTail -> 'COMMA' semMarkerParam type 'id' semMarkerArrSizeList rept-fParamsTail5 semActionArrSizeList semActionParam 
+fParamsTail -> 'COMMA' semMarkerParam type 'id' arraySizeList semActionParam 
 
 factor -> idnestid 
 factor -> 'intNum' 
@@ -39,7 +42,7 @@ factor -> 'LPAREN' arithExpr 'RPAREN'
 factor -> semMarkerNot 'not' factor semActionNot 
 factor -> semMarkerSignedNum sign factor semActionSignedNum 
 
-funcBody -> semMarkerFuncBody opt-funcBody1 'do' semMarkerStatBlock rept-funcBody4 semActionStatBlock semActionFuncBody 'end' 
+funcBody -> semMarkerFuncBody semMarkerLocalVarList opt-funcBody2 semActionLocalVarList 'do' semMarkerStatBlock rept-funcBody6 semActionStatBlock semActionFuncBody 'end' 
 
 funcDecl -> 'id' 'LPAREN' semMarkerfParams fParams semActionfParams 'RPAREN' 'COLON' funcDeclLF 
 
@@ -53,7 +56,7 @@ funcHead -> 'id' scope 'LPAREN' semMarkerfParams fParams semActionfParams 'RPARE
 idnestLF -> rept-idnestLF0 
 
 idnestLFLF -> semMarkerIndexList indice rept-idnestLFLF2 semActionIndexList 
-idnestLFLF -> semMarkerFuncCall 'LPAREN' semMarkeraParams aParams semActionaParams 'RPAREN' semActionFuncCall 
+idnestLFLF -> semMarkerFuncCall 'LPAREN' aParams 'RPAREN' semActionFuncCall 
 
 idnestid -> semMarkerVariable semMarkerVarMember 'id' opt-idnestid3 semActionVarMember idnestLF semActionVariable 
 
@@ -62,11 +65,11 @@ indice -> 'LSB' arithExpr 'RSB'
 memberDecl -> semMarkerMemberDecl visibility memberDecl2 semActionMemberDecl 
 
 memberDecl2 -> 'id' memberDecl3 
-memberDecl2 -> 'integer' 'id' semMarkerArrSizeList rept-memberDecl23 semActionArrSizeList 'SEMICOLON' 
-memberDecl2 -> 'float' 'id' semMarkerArrSizeList rept-memberDecl23 semActionArrSizeList 'SEMICOLON' 
+memberDecl2 -> 'integer' 'id' arraySizeList 'SEMICOLON' 
+memberDecl2 -> 'float' 'id' arraySizeList 'SEMICOLON' 
 
 memberDecl3 -> 'LPAREN' semMarkerfParams fParams semActionfParams 'RPAREN' 'COLON' funcDeclLF 
-memberDecl3 -> 'id' semMarkerArrSizeList rept-memberDecl32 semActionArrSizeList 'SEMICOLON' 
+memberDecl3 -> 'id' arraySizeList 'SEMICOLON' 
 
 memberList -> semMarkerMemberList rept-memberList1 semActionMemberList 
 
@@ -74,11 +77,11 @@ multOp -> 'TIMES'
 multOp -> 'DIVIDE' 
 multOp -> 'and' 
 
-opt-classDecl3 -> semMarkerInheritanceList 'inherits' 'id' rept-opt-classDecl33 semActionInheritanceList 
-opt-classDecl3 -> EPSILON 
+opt-classDecl4 -> 'inherits' 'id' rept-opt-classDecl42 
+opt-classDecl4 -> EPSILON 
 
-opt-funcBody1 -> 'local' semMarkerLocalVarList rept-opt-funcBody12 semActionLocalVarList 
-opt-funcBody1 -> EPSILON 
+opt-funcBody2 -> 'local' rept-opt-funcBody21 
+opt-funcBody2 -> EPSILON 
 
 opt-idnestLF4 -> idnestLFLF 
 opt-idnestLF4 -> EPSILON 
@@ -97,20 +100,17 @@ relOp -> 'GT'
 relOp -> 'LEQ' 
 relOp -> 'GEQ' 
 
-rept-aParams2 -> aParamsTail rept-aParams2 
-rept-aParams2 -> EPSILON 
+rept-aParams3 -> aParamsTail rept-aParams3 
+rept-aParams3 -> EPSILON 
 
-rept-fParams4 -> arraySize rept-fParams4 
-rept-fParams4 -> EPSILON 
+rept-arraySizeList2 -> arraySize rept-arraySizeList2 
+rept-arraySizeList2 -> EPSILON 
 
-rept-fParams7 -> fParamsTail rept-fParams7 
-rept-fParams7 -> EPSILON 
+rept-fParams5 -> fParamsTail rept-fParams5 
+rept-fParams5 -> EPSILON 
 
-rept-fParamsTail5 -> arraySize rept-fParamsTail5 
-rept-fParamsTail5 -> EPSILON 
-
-rept-funcBody4 -> statement rept-funcBody4 
-rept-funcBody4 -> EPSILON 
+rept-funcBody6 -> statement rept-funcBody6 
+rept-funcBody6 -> EPSILON 
 
 rept-idnestLF0 -> 'DOT' semMarkerVarMember 'id' opt-idnestLF4 semActionVarMember rept-idnestLF0 
 rept-idnestLF0 -> EPSILON 
@@ -118,20 +118,14 @@ rept-idnestLF0 -> EPSILON
 rept-idnestLFLF2 -> indice rept-idnestLFLF2 
 rept-idnestLFLF2 -> EPSILON 
 
-rept-memberDecl23 -> arraySize rept-memberDecl23 
-rept-memberDecl23 -> EPSILON 
-
-rept-memberDecl32 -> arraySize rept-memberDecl32 
-rept-memberDecl32 -> EPSILON 
-
 rept-memberList1 -> memberDecl rept-memberList1 
 rept-memberList1 -> EPSILON 
 
-rept-opt-classDecl33 -> 'COMMA' 'id' rept-opt-classDecl33 
-rept-opt-classDecl33 -> EPSILON 
+rept-opt-classDecl42 -> 'COMMA' 'id' rept-opt-classDecl42 
+rept-opt-classDecl42 -> EPSILON 
 
-rept-opt-funcBody12 -> varDecl rept-opt-funcBody12 
-rept-opt-funcBody12 -> EPSILON 
+rept-opt-funcBody21 -> varDecl rept-opt-funcBody21 
+rept-opt-funcBody21 -> EPSILON 
 
 rept-prog1 -> classDecl rept-prog1 
 rept-prog1 -> EPSILON 
@@ -142,17 +136,14 @@ rept-prog4 -> EPSILON
 rept-statBlock1 -> statement rept-statBlock1 
 rept-statBlock1 -> EPSILON 
 
-rept-varDecl4 -> arraySize rept-varDecl4 
-rept-varDecl4 -> EPSILON 
-
 returnType -> type 
 returnType -> 'void' 
 
 rightrec-arithExpr -> EPSILON 
-rightrec-arithExpr -> addOp term semActionArithExpr semMarkerArithExpr rightrec-arithExpr 
+rightrec-arithExpr -> addOp semMarkerArithExpr term rightrec-arithExpr semActionArithExpr 
 
 rightrec-term -> EPSILON 
-rightrec-term -> multOp factor semActionTerm semMarkerTerm rightrec-term 
+rightrec-term -> multOp semMarkerTerm factor rightrec-term semActionTerm 
 
 scope -> 'DOUBLECOLON' 'id' 
 scope -> EPSILON 
@@ -160,6 +151,8 @@ scope -> EPSILON
 semActionArithExpr -> EPSILON 
 
 semActionArrSizeList -> EPSILON 
+
+semActionArraySize -> EPSILON 
 
 semActionAssign -> EPSILON 
 
@@ -187,6 +180,8 @@ semActionInheritanceList -> EPSILON
 
 semActionLocalVarList -> EPSILON 
 
+semActionMain -> EPSILON 
+
 semActionMainBlock -> EPSILON 
 
 semActionMemberDecl -> EPSILON 
@@ -204,6 +199,8 @@ semActionRead -> EPSILON
 semActionRelExpr -> EPSILON 
 
 semActionReturn -> EPSILON 
+
+semActionScope -> EPSILON 
 
 semActionSignedNum -> EPSILON 
 
@@ -231,6 +228,8 @@ semMarkerArithExpr -> EPSILON
 
 semMarkerArrSizeList -> EPSILON 
 
+semMarkerArraySize -> EPSILON 
+
 semMarkerAssign -> EPSILON 
 
 semMarkerClassDecl -> EPSILON 
@@ -257,6 +256,8 @@ semMarkerInheritanceList -> EPSILON
 
 semMarkerLocalVarList -> EPSILON 
 
+semMarkerMain -> EPSILON 
+
 semMarkerMainBlock -> EPSILON 
 
 semMarkerMemberDecl -> EPSILON 
@@ -274,6 +275,8 @@ semMarkerRead -> EPSILON
 semMarkerRelExpr -> EPSILON 
 
 semMarkerReturn -> EPSILON 
+
+semMarkerScope -> EPSILON 
 
 semMarkerSignedNum -> EPSILON 
 
@@ -304,14 +307,14 @@ statBlock -> 'do' rept-statBlock1 'end'
 statBlock -> statement 
 statBlock -> EPSILON 
 
-statement -> semMarkerAssign idnestid statementLF semActionAssign 
+statement -> semMarkerAssign idnestid statementLF 
 statement -> semMarkerIf 'if' 'LPAREN' relExpr 'RPAREN' 'then' semMarkerThenBlock statBlock semActionThenBlock 'else' semMarkerElseBlock statBlock semActionElseBlock 'SEMICOLON' semActionIf 
 statement -> semMarkerWhile 'while' 'LPAREN' relExpr 'RPAREN' semMarkerStatBlock statBlock 'SEMICOLON' semActionStatBlock semActionWhile 
 statement -> semMarkerRead 'read' 'LPAREN' variable 'RPAREN' 'SEMICOLON' semActionRead 
 statement -> semMarkerWrite 'write' 'LPAREN' expr 'RPAREN' 'SEMICOLON' semActionWrite 
 statement -> semMarkerReturn 'return' 'LPAREN' expr 'RPAREN' 'SEMICOLON' semActionReturn 
 
-statementLF -> assignOp expr 'SEMICOLON' 
+statementLF -> assignOp expr 'SEMICOLON' semActionAssign 
 statementLF -> 'SEMICOLON' 
 
 term -> semMarkerTerm factor rightrec-term semActionTerm 
@@ -320,7 +323,7 @@ type -> 'integer'
 type -> 'float' 
 type -> 'id' 
 
-varDecl -> semMarkerVarDecl type 'id' semMarkerArrSizeList rept-varDecl4 semActionArrSizeList 'SEMICOLON' semActionVarDecl 
+varDecl -> semMarkerVarDecl type 'id' arraySizeList 'SEMICOLON' semActionVarDecl 
 
 variable -> idnestid 
 
