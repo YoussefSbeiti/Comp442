@@ -1,0 +1,4 @@
+Bugs:
+
+**semantic checker:
+    -if funtion def does not match function declaration, scope will not change when entering function def. so this will cause error while checking inside the function

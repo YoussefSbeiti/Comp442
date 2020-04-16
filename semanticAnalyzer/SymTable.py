@@ -84,11 +84,9 @@ class SymTable:
         #self.checkForFunctionShadownWarning(name , funcType)
 
     def getEntryByName(self , name):
-        rslt = []
         for entry in self.entries:
             if entry['name'] == name:
-                rslt.append(entry)
-        return rslt
+                return entry
 
     def getFunctionEntry(self, name , funcType):
         for entry in self.entries:
@@ -259,3 +257,55 @@ class SymTable:
                 self.entries.remove(entry)
                 return
         print("could not find entry to remove")
+
+
+    def getTypeSizesHashMap(self):
+        rslt = {"integer" : 4 , "float" : 8}
+        while len(rslt.keys()) - 2 != len(self.getAllClassEntries()):
+            
+            for entry in self.entries:
+                
+                if entry['kind'] == "Class" and entry['name'] not in rslt.keys():
+                    
+                    classSymTable = entry['link']
+                    className = entry['name']
+                    typeSize = 0
+                    NotPossibleToCalculateTypeSize = False
+                    
+                    for classTableEntry in classSymTable.entries:
+                        
+                        if classTableEntry['kind'] == 'Variable':
+                            #Array support goes here 
+                            if classTableEntry["Type"] not in rslt.keys():
+                                NotPossibleToCalculateTypeSize = True
+                                break
+                            else:
+                                typeSize += rslt[classTableEntry["Type"]]
+                        
+                        #possibly have memebr functions info
+                        # elif classTableEntry['kind'] == 'Function':
+                        #     NotPossibleToCalculateFuncSize = False
+                        #     funcSymTable = classTableEntry['link']
+                        #     funcSize = 0
+                        #     for funcEntry in funcSymTable.entries:
+                        #         if funcEntry["Type"] not in rslt.keys():
+                        #             NotPossibleToCalculateFuncSize = True
+                        #             break
+                        #         else:
+                        #             funcSize += rslt[funcEntry["Type"]] 
+                            
+                        #     if NotPossibleToCalculateFuncSize:
+                        #         break
+                        #     else:
+                        #         typeSize += funcSize
+
+
+                    if not NotPossibleToCalculateTypeSize:
+                        rslt[entry['name']] = typeSize
+        
+        return rslt
+
+#    def decorateSymTableWithMemoryInformation(self):
+ #       for entry in self.entries:
+
+

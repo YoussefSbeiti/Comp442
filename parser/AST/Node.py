@@ -7,17 +7,14 @@ class Node:
         self.type = None 
 
         self.parent = None
-
         self.children = []
 
         self.line = None
 
         self.error = None
-
         self.warning = None
 
         self.visitCount = 0
-        self.affectedScope = False 
 
         self.id = Node.id
         Node.id = Node.id+1
@@ -89,7 +86,14 @@ class Node:
             return False
 
     def removeChild(self , child):
-        self.children.remove(child)     
+        self.children.remove(child)
+
+    def resetVisitCount(self):
+        self.visitCount = 0
+        if self.children != []:
+            for child in self.children:
+                child.resetVisitCount()
+    
         
 
     def __str__(self):

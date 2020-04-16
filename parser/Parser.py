@@ -97,7 +97,7 @@ class Parser:
         for row in rows:
             row[0] = row[0].replace(">" , "&gt;")
             row[0] = row[0].replace("<" , "&lt;")
-        file   = open( 'parseTable.html' , 'w+')
+        file   = open( 'parser/Artifacts/parseTable.html' , 'w+')
         file.write(tabulate(rows, headers = sorted(self.grammar.terminals), tablefmt="html"))      # read the entire file into a string
         
         
