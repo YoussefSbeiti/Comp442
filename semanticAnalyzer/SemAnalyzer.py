@@ -31,7 +31,7 @@ class SemAnalyzer:
         self.globalSymTable = symTableCreator.globalSymTable
 
         semanticCheckerVisitor = SemanticCheckerVisitor(self.globalSymTable) 
-        self.traverseTree(progNode , semanticCheckerVisitor)
+        #self.traverseTree(progNode , semanticCheckerVisitor)
 
         progNode.resetVisitCount()
 

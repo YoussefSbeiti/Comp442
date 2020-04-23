@@ -18,4 +18,4 @@ globalSymTable = semAnalyzer.analyzeTree(parser.astRoot)
 print(str(globalSymTable.getTypeSizesHashMap()))
 globalSymTable.symTableAsHtml()
 
-call(["moon/moon", "moon/outFile.m"])
+call(["moon/moon", "moon/outFile.m", "moon/lib.m" ])

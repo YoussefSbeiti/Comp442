@@ -169,9 +169,13 @@ class SemanticCheckerVisitor:
                     self.scopeStack.pop()        
 
         if node.value == "Variable":
-             if node.visitCount == 2:
+            if node.visitCount == 1:
+                self.semanticStack.append("VARIABLE")
+
+            if node.visitCount == 2:
                 if self.semanticStack != []: 
-                    varResult = self.semanticStack.pop()
+                    print(str(self.semanticStack))
+                    varResult = self.popStackUntil("VARIABLE")
                     self.semanticStack.append(varResult["type"])
                     ##print(varResult["popCount"])
                     for i in range(varResult['popCount']):

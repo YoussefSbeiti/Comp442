@@ -218,6 +218,8 @@ semActionVariable -> EPSILON
 
 semActionWhile -> EPSILON 
 
+semActionWhileBlock -> EPSILON 
+
 semActionWrite -> EPSILON 
 
 semActionaParams -> EPSILON 
@@ -294,6 +296,8 @@ semMarkerVariable -> EPSILON
 
 semMarkerWhile -> EPSILON 
 
+semMarkerWhileBlock -> EPSILON 
+
 semMarkerWrite -> EPSILON 
 
 semMarkeraParams -> EPSILON 
@@ -309,7 +313,7 @@ statBlock -> EPSILON
 
 statement -> semMarkerAssign idnestid statementLF 
 statement -> semMarkerIf 'if' 'LPAREN' relExpr 'RPAREN' 'then' semMarkerThenBlock statBlock semActionThenBlock 'else' semMarkerElseBlock statBlock semActionElseBlock 'SEMICOLON' semActionIf 
-statement -> semMarkerWhile 'while' 'LPAREN' relExpr 'RPAREN' semMarkerStatBlock statBlock 'SEMICOLON' semActionStatBlock semActionWhile 
+statement -> semMarkerWhile 'while' 'LPAREN' relExpr 'RPAREN' semMarkerWhileBlock statBlock 'SEMICOLON' semActionWhileBlock semActionWhile 
 statement -> semMarkerRead 'read' 'LPAREN' variable 'RPAREN' 'SEMICOLON' semActionRead 
 statement -> semMarkerWrite 'write' 'LPAREN' expr 'RPAREN' 'SEMICOLON' semActionWrite 
 statement -> semMarkerReturn 'return' 'LPAREN' expr 'RPAREN' 'SEMICOLON' semActionReturn 

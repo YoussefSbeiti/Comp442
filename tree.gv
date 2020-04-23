@@ -1,205 +1,99 @@
 digraph {
-	709 [label=Prog]
-	8 [label=ClassList]
-	709 -> 8
-	16 [label=FuncDefList]
-	709 -> 16
-	705 [label=FuncBody]
-	709 -> 705
-	135 [label=LocalVarList]
-	705 -> 135
-	45 [label=VarDecl]
-	135 -> 45
-	37 [label=integer]
-	45 -> 37
-	39 [label=a]
-	45 -> 39
-	62 [label=VarDecl]
-	135 -> 62
-	54 [label=integer]
-	62 -> 54
-	56 [label=b]
-	62 -> 56
-	79 [label=VarDecl]
-	135 -> 79
-	71 [label=integer]
-	79 -> 71
-	73 [label=c]
-	79 -> 73
-	96 [label=VarDecl]
-	135 -> 96
-	88 [label=integer]
-	96 -> 88
-	90 [label=d]
-	96 -> 90
-	113 [label=VarDecl]
-	135 -> 113
-	105 [label=integer]
-	113 -> 105
-	107 [label=e]
-	113 -> 107
-	130 [label=VarDecl]
-	135 -> 130
-	122 [label=integer]
-	130 -> 122
-	124 [label=f]
-	130 -> 124
-	702 [label=StatBlock]
-	705 -> 702
-	198 [label=Assign]
-	702 -> 198
-	165 [label=Variable]
-	198 -> 165
-	159 [label=VarMember]
-	165 -> 159
-	155 [label=a]
-	159 -> 155
-	170 [label="="]
-	198 -> 170
-	191 [label=ArithExpr]
-	198 -> 191
-	186 [label=Term]
-	191 -> 186
-	182 [label=1]
-	186 -> 182
-	256 [label=Assign]
-	702 -> 256
-	223 [label=Variable]
-	256 -> 223
-	217 [label=VarMember]
-	223 -> 217
-	213 [label=b]
-	217 -> 213
-	228 [label="="]
-	256 -> 228
-	249 [label=ArithExpr]
-	256 -> 249
-	244 [label=Term]
-	249 -> 244
-	240 [label=2]
-	244 -> 240
-	314 [label=Assign]
-	702 -> 314
-	281 [label=Variable]
-	314 -> 281
-	275 [label=VarMember]
-	281 -> 275
-	271 [label=c]
-	275 -> 271
-	286 [label="="]
-	314 -> 286
-	307 [label=ArithExpr]
-	314 -> 307
-	302 [label=Term]
-	307 -> 302
-	298 [label=3]
-	302 -> 298
-	372 [label=Assign]
-	702 -> 372
-	339 [label=Variable]
-	372 -> 339
-	333 [label=VarMember]
-	339 -> 333
-	329 [label=d]
-	333 -> 329
-	344 [label="="]
-	372 -> 344
-	365 [label=ArithExpr]
-	372 -> 365
-	360 [label=Term]
-	365 -> 360
-	356 [label=15]
-	360 -> 356
-	430 [label=Assign]
-	702 -> 430
-	397 [label=Variable]
-	430 -> 397
-	391 [label=VarMember]
-	397 -> 391
-	387 [label=e]
-	391 -> 387
-	402 [label="="]
-	430 -> 402
-	423 [label=ArithExpr]
-	430 -> 423
-	418 [label=Term]
-	423 -> 418
-	414 [label=6]
-	418 -> 414
-	657 [label=Assign]
-	702 -> 657
-	455 [label=Variable]
-	657 -> 455
-	449 [label=VarMember]
-	455 -> 449
-	445 [label=f]
-	449 -> 445
-	460 [label="="]
-	657 -> 460
-	650 [label=ArithExpr]
-	657 -> 650
-	494 [label=Term]
-	650 -> 494
-	489 [label=Variable]
-	494 -> 489
-	483 [label=VarMember]
-	489 -> 483
-	479 [label=a]
-	483 -> 479
-	499 [label="+"]
-	650 -> 499
-	647 [label=ArithExpr]
-	650 -> 647
-	531 [label=Term]
-	647 -> 531
-	526 [label=Variable]
-	531 -> 526
-	520 [label=VarMember]
-	526 -> 520
-	516 [label=b]
-	520 -> 516
-	536 [label="+"]
-	647 -> 536
-	644 [label=ArithExpr]
-	647 -> 644
-	599 [label=Term]
-	644 -> 599
-	563 [label=Variable]
-	599 -> 563
-	557 [label=VarMember]
-	563 -> 557
-	553 [label=c]
-	557 -> 553
-	568 [label="*"]
-	599 -> 568
-	596 [label=Term]
-	599 -> 596
-	591 [label=Variable]
-	596 -> 591
-	585 [label=VarMember]
-	591 -> 585
-	581 [label=d]
-	585 -> 581
-	604 [label="-"]
-	644 -> 604
-	641 [label=ArithExpr]
-	644 -> 641
-	636 [label=Term]
-	641 -> 636
-	631 [label=Variable]
-	636 -> 631
-	625 [label=VarMember]
-	631 -> 625
-	621 [label=e]
-	625 -> 621
-	697 [label=Write]
-	702 -> 697
-	665 [label=write]
-	697 -> 665
-	688 [label=ArithExpr]
-	697 -> 688
-	683 [label=Term]
-	688 -> 683
-	679 [label=42]
-	683 -> 679
+	331 [label=Prog]
+	214 [label=ClassList]
+	331 -> 214
+	99 [label=ClassDecl]
+	214 -> 99
+	13 [label=A]
+	99 -> 13
+	20 [label=InheritanceList]
+	99 -> 20
+	92 [label=MemberList]
+	99 -> 92
+	46 [label=MemberDecl]
+	92 -> 46
+	35 [label=public]
+	46 -> 35
+	38 [label=float]
+	46 -> 38
+	40 [label=f]
+	46 -> 40
+	67 [label=MemberDecl]
+	92 -> 67
+	55 [label=public]
+	67 -> 55
+	58 [label=B]
+	67 -> 58
+	61 [label=b]
+	67 -> 61
+	87 [label=MemberDecl]
+	92 -> 87
+	76 [label=public]
+	87 -> 76
+	79 [label=integer]
+	87 -> 79
+	81 [label=c]
+	87 -> 81
+	134 [label=ClassDecl]
+	214 -> 134
+	109 [label=B]
+	134 -> 109
+	116 [label=InheritanceList]
+	134 -> 116
+	127 [label=MemberList]
+	134 -> 127
+	209 [label=ClassDecl]
+	214 -> 209
+	144 [label=C]
+	209 -> 144
+	151 [label=InheritanceList]
+	209 -> 151
+	202 [label=MemberList]
+	209 -> 202
+	177 [label=MemberDecl]
+	202 -> 177
+	166 [label=public]
+	177 -> 166
+	169 [label=integer]
+	177 -> 169
+	171 [label=t]
+	177 -> 171
+	197 [label=MemberDecl]
+	202 -> 197
+	186 [label=public]
+	197 -> 186
+	189 [label=integer]
+	197 -> 189
+	191 [label=d]
+	197 -> 191
+	222 [label=FuncDefList]
+	331 -> 222
+	327 [label=FuncBody]
+	331 -> 327
+	256 [label=LocalVarList]
+	327 -> 256
+	251 [label=VarDecl]
+	256 -> 251
+	243 [label=integer]
+	251 -> 243
+	245 [label=c]
+	251 -> 245
+	324 [label=StatBlock]
+	327 -> 324
+	319 [label=Assign]
+	324 -> 319
+	286 [label=Variable]
+	319 -> 286
+	280 [label=VarMember]
+	286 -> 280
+	276 [label=c]
+	280 -> 276
+	291 [label="="]
+	319 -> 291
+	312 [label=ArithExpr]
+	319 -> 312
+	307 [label=Term]
+	312 -> 307
+	303 [label=14]
+	307 -> 303
 }

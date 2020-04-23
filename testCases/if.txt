@@ -1,0 +1,27 @@
+class A{
+  public float f;
+  public B b;
+  public integer c;
+};
+
+class B{
+  public integer c[10];
+};
+
+
+main
+  local
+    A a[10];
+    integer b;
+  do
+    read(b);
+    if(b >= 11)
+	  then
+      write(1);
+	  else
+      write(0);
+	  ;
+
+    
+  end
+  end

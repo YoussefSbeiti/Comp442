@@ -1,13 +1,29 @@
-| Name   | Kind   | Type   | Link                                     |
-|--------+--------+--------+------------------------------------------|
-| Main   | Main   | None   | -------------------------------------    |
-|        |        |        | Table Name: Main                         |
-|        |        |        | ------------------------------------     |
-|        |        |        | | Name   | Kind     | Type    | Link   | |
-|        |        |        | |--------+----------+---------+--------| |
-|        |        |        | | a      | Variable | integer | None   | |
-|        |        |        | | b      | Variable | integer | None   | |
-|        |        |        | | c      | Variable | integer | None   | |
-|        |        |        | | d      | Variable | integer | None   | |
-|        |        |        | | e      | Variable | integer | None   | |
-|        |        |        | | f      | Variable | integer | None   | |
+| Name   | Kind   | Type   | Link                                                |
+|--------+--------+--------+-----------------------------------------------------|
+| A      | Class  | None   | -------------------------------------               |
+|        |        |        | Table Name: A                                       |
+|        |        |        | ------------------------------------                |
+|        |        |        | | name   | kind     | Type    | link   |   offset | |
+|        |        |        | |--------+----------+---------+--------+----------| |
+|        |        |        | | f      | Variable | float   | None   |        0 | |
+|        |        |        | | b      | Variable | B       | None   |        8 | |
+|        |        |        | | c      | Variable | integer | None   |       16 | |
+| B      | Class  | None   | -------------------------------------               |
+|        |        |        | Table Name: B                                       |
+|        |        |        | ------------------------------------                |
+|        |        |        | | name   | kind     | Type   | link   |   offset |  |
+|        |        |        | |--------+----------+--------+--------+----------|  |
+|        |        |        | | c      | Variable | C      | None   |        0 |  |
+| C      | Class  | None   | -------------------------------------               |
+|        |        |        | Table Name: C                                       |
+|        |        |        | ------------------------------------                |
+|        |        |        | | name   | kind     | Type    | link   |   offset | |
+|        |        |        | |--------+----------+---------+--------+----------| |
+|        |        |        | | t      | Variable | integer | None   |        0 | |
+|        |        |        | | d      | Variable | integer | None   |        4 | |
+| Main   | Main   | None   | -------------------------------------               |
+|        |        |        | Table Name: Main                                    |
+|        |        |        | ------------------------------------                |
+|        |        |        | | name   | kind     | Type    | link   |            |
+|        |        |        | |--------+----------+---------+--------|            |
+|        |        |        | | c      | Variable | integer | None   |            |

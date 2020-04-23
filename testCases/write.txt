@@ -5,19 +5,16 @@ class A{
 };
 
 class B{
-};
-
-class C{
-  public integer t;
-  public integer d;
+  public integer c[10];
 };
 
 
 main
   local
-    integer c;
+    A a[10];
+    integer b;
   do
-    c= 14;
-
+    b = 33;
+    write(b);
+    end
   end
-end

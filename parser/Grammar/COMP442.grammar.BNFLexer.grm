@@ -71,13 +71,16 @@
 
 <statement>    ::= <semMarkerAssign> <idnestid> <statementLF> 
               |  <semMarkerIf>  'if'     'LPAREN' <relExpr> 'RPAREN' 'then' <semMarkerThenBlock> <statBlock> <semActionThenBlock> 'else' <semMarkerElseBlock>  <statBlock>  <semActionElseBlock> 'SEMICOLON' <semActionIf>
-              |  <semMarkerWhile> 'while'  'LPAREN' <relExpr> 'RPAREN'<semMarkerStatBlock>  <statBlock> 'SEMICOLON' <semActionStatBlock> <semActionWhile>
+              |  <semMarkerWhile> 'while'  'LPAREN' <relExpr> 'RPAREN'<semMarkerWhileBlock>  <statBlock> 'SEMICOLON' <semActionWhileBlock> <semActionWhile>
               |  <semMarkerRead> 'read'   'LPAREN' <variable> 'RPAREN' 'SEMICOLON' <semActionRead>
               |  <semMarkerWrite> 'write'  'LPAREN' <expr> 'RPAREN' 'SEMICOLON' <semActionWrite>
               |  <semMarkerReturn> 'return' 'LPAREN' <expr> 'RPAREN' 'SEMICOLON' <semActionReturn>
 
 <semActionAssign> ::= EPSILON
 <semMarkerAssign> ::= EPSILON
+
+<semMarkerWhileBlock> ::= EPSILON
+<semActionWhileBlock> ::= EPSILON
 
 <semActionRead> ::= EPSILON
 <semMarkerRead> ::= EPSILON

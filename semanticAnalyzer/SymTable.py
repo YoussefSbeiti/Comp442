@@ -37,6 +37,8 @@ class SymTable:
     def __init__(self , name = ""):
         self.entries = []
         self.name = name
+        self.size = None
+        self.keys = None
 
     def addVariable(self, name, varType):
         
@@ -172,13 +174,17 @@ class SymTable:
 
     def __str__(self):
         rslt = "-------------------------------------\n"
-        rslt += "Table Name: " + self.name + "\n"
+        rslt += "Table Name: " + self.name + "\t\tsize: " + self.size + "\n"
         rslt += "------------------------------------\n"
         rows = []
         for entry in self.entries:
-            rows.append([entry['name'] , entry['kind'] , str(entry['Type']) , str(entry['link'])])
+            row = []
+            for key in entry.keys():    
+                row.append(str(entry[key]))
+            rows.append(row)
         
-        rslt+=tabulate(rows, headers = ['Name' , 'Kind', 'Type' , 'Link'], tablefmt="orgtbl")
+        keys = self.entries[0].keys()
+        rslt+=tabulate(rows, headers = keys, tablefmt="orgtbl")
 
         return rslt
 
@@ -280,6 +286,7 @@ class SymTable:
                                 NotPossibleToCalculateTypeSize = True
                                 break
                             else:
+                                classTableEntry["offset"] = typeSize
                                 typeSize += rslt[classTableEntry["Type"]]
                         
                         #possibly have memebr functions info
@@ -301,11 +308,12 @@ class SymTable:
 
 
                     if not NotPossibleToCalculateTypeSize:
+                        entry['link'].size = typeSize
                         rslt[entry['name']] = typeSize
         
         return rslt
 
-#    def decorateSymTableWithMemoryInformation(self):
- #       for entry in self.entries:
+   # def decorateSymTableWithMemoryInformation(self):
+    #    for entry in self.entries:
 
 
